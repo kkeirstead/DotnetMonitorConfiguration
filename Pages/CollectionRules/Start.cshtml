@@ -1,0 +1,91 @@
+﻿@page
+@using DotnetMonitorConfiguration.Models
+@model StartModel
+
+<form method="post">
+    <fieldset>
+        <div class="text-center">
+            <button class="button" type="submit" asp-route-data="Submit" asp-page-handler="Way2" id="submitButton">New Collection Rule</button>
+        </div>
+    </fieldset>
+</form>
+
+
+<div class="row">
+  <div class="column">
+      @foreach(var collectionRule in General._collectionRules)
+       {
+         <a class=".btn button" asp-area="" asp-page="/CollectionRules/TriggerSelection">@collectionRule.Name</a>
+       }
+    </div>
+  <div class="column"><pre><code> "CollectionRules": {
+    "Rule1": {
+      "Trigger": {
+        "Type": "EventCounter",
+        "Settings": {
+          "ProviderName": "System.Runtime",
+          "CounterName": "cpu-usage",
+          "GreaterThan": 0,
+          "SlidingWindowDuration": "00:00:01"
+        }
+      },
+      "Actions": [
+        {
+          "Type": "Collect",
+          "Settings": {
+            "Type": "Trace",
+            "Egress": "artifacts"
+          }
+        }
+      ],
+      "Filters": [
+        {
+          "Key": "ProcessName",
+          "Value": "FirstWebApp"
+        }
+      ]
+    },
+    "Rule2": {
+      "Trigger": {
+        "Type": "EventCounter",
+        "Settings": {
+          "ProviderName": "System.Runtime",
+          "CounterName": "cpu-usage",
+          "GreaterThan": 0
+        }
+      },
+      "Actions": [
+        {
+          "Type": "CollectTrace",
+          "Egress": "artifacts"
+        }
+      ],
+      "Filters": [
+        {
+          "Key": "ProcessName",
+          "Value": "FirstWebApp"
+        }
+      ]
+    },
+    "AspnetStatus": {
+      "Trigger": {
+        "Type": "AspNetResponseStatus",
+        "Settings": {
+          "ResponseCount": 1,
+          "StatusCodes": [
+            "200-202"
+          ]
+        }
+      },
+      "Actions": [
+        {
+          "Type": "CollectDump",
+          "Settings": {
+            "Egress": "artifacts",
+            "Type": "Mini"
+          }
+        }
+      ]
+    }
+  }</code></pre></div>
+</div>

@@ -1,0 +1,12 @@
+﻿@page
+@using DotnetMonitorConfiguration.Models
+@model CollectionRulesModel
+@{
+    ViewData["Title"] = "Collection Rules";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="text-center">
+    <a class="button" asp-area="" asp-page="/LoadJson">Load JSON</a>
+    <a class="button" asp-area="" asp-page="/CollectionRules/Start">Start From Scratch</a>
+</div>

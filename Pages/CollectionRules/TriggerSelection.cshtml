@@ -1,0 +1,11 @@
+﻿@page
+@using DotnetMonitorConfiguration.Models
+@model TriggerSelectionModel
+<form method="post">
+    <fieldset>
+        @foreach(var triggerType in General._triggerTypes)
+        {
+            <button class="button" type="submit" asp-route-data=@triggerType asp-page-handler="Way2" id="submitButton">@triggerType</button>
+        }
+    </fieldset>
+</form>

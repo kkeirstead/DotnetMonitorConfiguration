@@ -1,0 +1,11 @@
+﻿@page
+@using DotnetMonitorConfiguration.Models
+@model ActionSelectionModel
+<form method="post">
+    <fieldset>
+        @foreach(var actionType in General._actionTypes)
+        {
+            <button class="button" type="submit" asp-route-data=@actionType asp-page-handler="Way2" id="submitButton">@actionType</button>
+        }
+    </fieldset>
+</form>

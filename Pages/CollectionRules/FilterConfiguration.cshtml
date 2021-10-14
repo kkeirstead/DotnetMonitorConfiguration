@@ -1,0 +1,20 @@
+﻿@page
+@using DotnetMonitorConfiguration.Models
+@model FilterConfigurationModel
+
+<form method="post">
+    <fieldset>
+        @{
+            int index = 0;
+        }
+        @foreach(var propertyInfo in FilterConfigurationModel.GetConfigurationSettings())
+        {
+            <input asp-for=properties[index.ToString()] placeholder=@propertyInfo.Name value=""/>
+            <br />
+            ++index;
+        }
+        
+        <button class="button" type="submit" asp-route-data="Submit" asp-page-handler="Way2" id="submitButton">Submit</button>
+
+    </fieldset>
+</form>

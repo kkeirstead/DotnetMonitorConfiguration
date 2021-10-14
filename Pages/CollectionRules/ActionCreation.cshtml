@@ -1,0 +1,19 @@
+﻿@page
+@using DotnetMonitorConfiguration.Models
+@model ActionCreationModel
+
+<form method="post">
+    <fieldset>
+        <div class="text-center">
+            <button class="button" type="submit" asp-route-data="Submit" asp-page-handler="Way2" id="submitButton">New Action</button>
+            <button class="button" type="submit" asp-route-data="Submit" asp-page-handler="Way3" id="submitButton">Done Adding Actions</button>
+        </div>
+    </fieldset>
+</form>
+
+<div class="row">
+    @foreach(var crAction in General._collectionRules[ActionCreationModel.collectionRuleIndex]._actions)
+    {
+        <a class=".btn button" asp-area="" asp-page="/CollectionRules/TriggerSelection">@crAction</a>
+    }
+</div>

@@ -1,0 +1,19 @@
+﻿@page
+@using DotnetMonitorConfiguration.Models
+@model FilterCreationModel
+
+<form method="post">
+    <fieldset>
+        <div class="text-center">
+            <button class="button" type="submit" asp-route-data="Submit" asp-page-handler="Way2" id="submitButton">New Filter</button>
+            <button class="button" type="submit" asp-route-data="Submit" asp-page-handler="Way3" id="submitButton">Done Adding Filters</button>
+        </div>
+    </fieldset>
+</form>
+
+<div class="row">
+    @foreach(var crFilter in General._collectionRules[ActionCreationModel.collectionRuleIndex]._filters)
+    {
+        <a class=".btn button" asp-area="" asp-page="/CollectionRules/TriggerSelection">@crFilter.Key</a>
+    }
+</div>
