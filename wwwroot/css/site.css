@@ -14,9 +14,16 @@ a.navbar-brand {
   word-break: break-all;
 }
 
-/* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: inherit;
+    text-decoration: inherit;
+    text-align: center;
+    display: block;
+}
+
+a:hover {
+    color: inherit;
+    text-decoration: none;
 }
 
 .btn-primary {
@@ -51,22 +58,81 @@ a {
     transition-duration: 0.4s;
 }
 
-.button:hover {
+.submit-button {
+    color: #FFF;
+    background-color: #01A6F0;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 0px 0px 1px #E5E5E5;
+    text-align: center;
+    display: block;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    vertical-align: middle;
+    align-content: center;
+    font-size: 30px;
+    display: block;
+    width: 80%;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    font-family: "Segoe UI";
+    font-size: 22px;
+    font-weight: 100;
+    font-style: normal;
+    transition-duration: 0.4s;
+}
+
+button:hover {
     background-color: #0076B0;
     color: #FFF;
     text-decoration: none;
+}
+
+input
+{
+    background-color: #E2E2E2;
+    border-radius: 5px;
+    border-width: 0px;
+    border-color: #EEE;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%;
+    margin-bottom: 3%;
+    width: 90%;
 }
 
 button {
 
 }
 
+select {
+    background-color: #E2E2E2;
+    border-radius: 5px;
+    border-width: 0px;
+    border-color: #EEE;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    margin: 5%;
+    width: 90%;
+}
+
 .column {
     float: left;
-    width: 40%;
+    width: 48%;
     background-color: #F1F1F1;
     padding: 5px;
-    margin: 5%;
+    margin: 1%;
 }
 
 /* Clear floats after the columns */
@@ -79,6 +145,34 @@ button {
 .row {
     background-color: #F9F9F9;
 }
+
+/* Clear floats after the columns */
+.row-narrow:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row-narrow {
+    background-color: #F9F9F9;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 5px;
+}
+
+.label {
+    font-size: 28px;
+    text-align: center;
+}
+
+.sub-label {
+    font-size: 16px;
+    margin-left: 20%;
+    margin-right: 20%;
+    color: #777;
+    text-align: center;
+}
+
 
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {

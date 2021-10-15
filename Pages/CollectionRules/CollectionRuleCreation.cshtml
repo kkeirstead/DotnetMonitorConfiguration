@@ -3,9 +3,15 @@
 @model CollectionRuleCreationModel
 
 <form method="post">
-    <fieldset>
-        <input asp-for="Name" placeholder="Name" value=""/>
-    </fieldset>
+    <div class="row-narrow">
+        <div class="label">Name</div>
+        <div class="sub-label">This is the name of your collection rule. It's meant to help you more easily identify your rules.</div>
 
-    <button class="button" type="submit" asp-route-data="Submit" asp-page-handler="Way2" id="submitButton">Submit</button>
+        <fieldset>
+            <input class-name ="text-field" asp-for="Name" placeholder="Name" value=""/>
+        </fieldset>
+
+    </div>
+    <button class="submit-button" type="submit" asp-route-data="Submit" asp-page-handler="Way2" id="submitButton">Submit</button>
 </form>
+

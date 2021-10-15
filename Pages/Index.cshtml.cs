@@ -16,10 +16,15 @@ namespace DotnetMonitorConfiguration.Pages
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
-        }
+        } 
 
         public void OnGet()
         {
+        }
+
+        public IActionResult OnPostWay2(string data)
+        {
+            return RedirectToPage("./CollectionRules");
         }
     }
 }

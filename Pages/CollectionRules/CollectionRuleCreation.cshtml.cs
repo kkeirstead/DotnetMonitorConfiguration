@@ -18,6 +18,9 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         [BindProperty]
         public string Name { get; set; }
 
+        [BindProperty]
+        public string Dropdown { get; set; }
+
         public CollectionRuleCreationModel(ILogger<CollectionRuleCreationModel> logger)
         {
             _logger = logger;

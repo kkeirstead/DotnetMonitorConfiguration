@@ -39,7 +39,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             TriggerConfigurationModel.collectionRuleIndex = collectionRuleIndex;
 
-            return RedirectToPage("./TriggerConfiguration");
+            return RedirectToPage("./TriggerConfiguration"); 
         }
     }
 }

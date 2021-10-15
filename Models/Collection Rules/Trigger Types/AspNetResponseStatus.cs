@@ -7,9 +7,8 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types
 {
     public class AspNetResponseStatus : CRTrigger
     {
-        public AspNetResponseStatus(string name, string[] statusCodes, int requestCount, TimeSpan? slidingWindowDuration, string[] includePaths, string[] excludePaths)
+        public AspNetResponseStatus(string[] statusCodes, int requestCount, TimeSpan? slidingWindowDuration, string[] includePaths, string[] excludePaths)
         {
-            Name = name;
             StatusCodes = statusCodes;
             RequestCount = requestCount;
             SlidingWindowDuration = slidingWindowDuration;
@@ -17,7 +16,6 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types
             ExcludePaths = excludePaths;
         }
 
-        public string Name { get; set; }
         public string[] StatusCodes { get; set; }
 
         public int RequestCount { get; set; }

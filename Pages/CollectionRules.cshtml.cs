@@ -12,15 +12,25 @@ namespace DotnetMonitorConfiguration.Pages
 {
     public class CollectionRulesModel : PageModel
     {
-        private readonly ILogger<PrivacyModel> _logger;
+        private readonly ILogger<CollectionRulesModel> _logger;
 
-        public CollectionRulesModel(ILogger<PrivacyModel> logger)
+        public CollectionRulesModel(ILogger<CollectionRulesModel> logger)
         {
             _logger = logger;
         }
 
         public void OnGet()
         {
+        }
+
+        public IActionResult OnPostWay2(string data)
+        {
+            return RedirectToPage("./LoadJSON");
+        }
+
+        public IActionResult OnPostWay3(string data)
+        {
+            return RedirectToPage("./CollectionRules/CollectionRuleCreation");
         }
     }
 }

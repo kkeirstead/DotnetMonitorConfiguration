@@ -7,9 +7,8 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types
 {
     public class EventCounter : CRTrigger
     {
-        public EventCounter(string name, string providerName, string counterName, double? greaterThan, double? lessThan, TimeSpan? slidingWindowDuration)
+        public EventCounter(string providerName, string counterName, double? greaterThan, double? lessThan, TimeSpan? slidingWindowDuration)
         {
-            Name = name;
             ProviderName = providerName;
             CounterName = counterName;
             GreaterThan = greaterThan;
@@ -17,7 +16,6 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types
             SlidingWindowDuration = slidingWindowDuration;
         }
 
-        public string Name { get; set; }
         public string ProviderName { get; set; }
 
         public string CounterName { get; set; }

@@ -7,7 +7,6 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types
 {
     public interface CRTrigger
     {
-        public string Name { get; set; }
         internal Type _triggerType { get; set; }
 
     }
