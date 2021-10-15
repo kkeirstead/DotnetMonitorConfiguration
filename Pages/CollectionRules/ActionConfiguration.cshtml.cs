@@ -1,4 +1,5 @@
 ﻿using DotnetMonitorConfiguration.Models;
+using DotnetMonitorConfiguration.Models.BorrowedFromDM;
 using DotnetMonitorConfiguration.Models.Collection_Rules;
 using DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types;
 using DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types;
@@ -68,11 +69,17 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 {
                     constructorArgs[index] = properties[key].Split(',');
                 }
+                else if (props[index].PropertyType == typeof(DumpType?))
+                {
+                    constructorArgs[index] = (DumpType)Enum.Parse(typeof(DumpType), properties[key]);
+                }
             }
-
+             
             var ctors = actionType.GetConstructors();
 
             CRAction action = (CRAction)ctors[0].Invoke(constructorArgs);
+
+            action._actionType = actionType;
 
             General._collectionRules[collectionRuleIndex]._actions.Add(action);
 

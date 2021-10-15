@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "KtPTO1uCdGLjJCNP63jM9U13f42pymKm9uqkYUHr7N0+u7Ew1T/qYLUzJpBWB915UWAfdf7L3xewusW4b8OP6Q==",
+  "dgSpecHash": "qJjdlxjo8AbOI7NW3FxuqZ9h+ImeK2Hf45N/PzVWjFCJLgcGpelY0ZtWYVBJsc+muQEV4KFQizi9oFCFjLu2UQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kkeirstead\\source\\repos\\DotnetMonitorConfiguration\\DotnetMonitorConfiguration.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\kkeirstead\\DotnetMonitorConfiguration\\DotnetMonitorConfiguration.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kkeirstead\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

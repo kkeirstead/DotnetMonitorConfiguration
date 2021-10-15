@@ -28,5 +28,6 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types
 
         public string[] ExcludePaths { get; set; }
 
+        Type CRTrigger._triggerType { get; set; }
     }
 }

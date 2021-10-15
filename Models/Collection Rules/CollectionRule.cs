@@ -18,7 +18,7 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules
 
         public CRTrigger _trigger;
 
-        public Type _triggerType;
+        //public Type _triggerType;
 
         public List<CRAction> _actions = new List<CRAction> {};
 

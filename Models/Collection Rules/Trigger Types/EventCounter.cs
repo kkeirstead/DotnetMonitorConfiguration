@@ -27,5 +27,7 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types
         public double? LessThan { get; set; }
         
         public TimeSpan? SlidingWindowDuration { get; set; }
+
+        Type CRTrigger._triggerType { get; set; }
     }
 }

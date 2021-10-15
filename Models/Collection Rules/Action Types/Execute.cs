@@ -19,5 +19,7 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
         public string Arguments { get; set; }
 
         public bool? IgnoreExitCode { get; set; }
+
+        Type CRAction._actionType { get; set; }
     }
 }

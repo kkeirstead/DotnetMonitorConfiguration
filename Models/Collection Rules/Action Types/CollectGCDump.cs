@@ -16,5 +16,7 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
         // Using the CollectGCDumpOptions. For a real version of this, it may be better to actually create some linkage between projects to reduce duplication.
 
         public string Egress { get; set; }
+
+        Type CRAction._actionType { get; set; }
     }
 }

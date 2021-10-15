@@ -71,6 +71,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             var ctors = triggerType.GetConstructors();
 
             CRTrigger trigger = (CRTrigger)ctors[0].Invoke(constructorArgs);
+            trigger._triggerType = triggerType;
 
             General._collectionRules[collectionRuleIndex]._trigger = trigger;
 

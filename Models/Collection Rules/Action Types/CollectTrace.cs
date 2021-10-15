@@ -28,5 +28,7 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
         public TimeSpan? Duration { get; set; }
 
         public string Egress { get; set; }
+
+        Type CRAction._actionType { get; set; }
     }
 }
