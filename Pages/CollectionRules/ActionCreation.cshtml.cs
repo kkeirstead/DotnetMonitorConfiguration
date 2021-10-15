@@ -29,7 +29,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public IActionResult OnPostWay2(string data)
         {
-            TriggerConfigurationModel.collectionRuleIndex = collectionRuleIndex;
+            ActionSelectionModel.collectionRuleIndex = collectionRuleIndex;
 
             return RedirectToPage("./ActionSelection");
         }

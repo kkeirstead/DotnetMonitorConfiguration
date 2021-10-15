@@ -19,7 +19,7 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
 
         public string Egress { get; set; }
 
-        public DumpType? Type { get; set; } = DumpType.WithHeap;
+        public DumpType? Type { get; set; }
 
         Type CRAction._actionType { get; set; }
     }

@@ -19,10 +19,10 @@
 
             if (currType.IsEnum)
             {
-                <select name = "Dropdown">
+                <select asp-for=properties[index.ToString()]>
                     @foreach (var enumName in Enum.GetNames(currType))
                     {
-                        <option value =@enumName selected>@enumName</option>
+                        <option value=@enumName>@enumName</option>
                     }
                 </select>
             }

@@ -28,7 +28,7 @@ namespace DotnetMonitorConfiguration.Models
             {
                 return "Provide a set of comma separated strings (e.g. First string,Second string,Third string)";
             }
-            if (null != type && type.IsEnum)
+            if ((null != type && type.IsEnum) || typeof(bool) == type)
             {
                 return "Select an option from the dropdown.";
             }

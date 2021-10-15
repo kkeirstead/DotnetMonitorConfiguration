@@ -181,7 +181,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             {
                 toReturn += FormatKVPair(setting.Name, (int)settingValue);
             }
-            else if (t == typeof(string))
+            else if (t == typeof(string) || t == typeof(bool))
             {
                 toReturn += FormatKVPair(setting.Name, (string)settingValue);
             }

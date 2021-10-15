@@ -74,8 +74,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             General._collectionRules[collectionRuleIndex]._limit = limit;
 
-            ActionCreationModel.collectionRuleIndex = collectionRuleIndex;
-
             return RedirectToPage("./Start");
         }
     }

@@ -123,7 +123,10 @@ select {
     font-size: 20px;
     text-align: center;
     display: block;
-    margin: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%;
+    margin-bottom: 3%;
     width: 90%;
 }
 
