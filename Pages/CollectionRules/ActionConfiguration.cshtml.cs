@@ -60,31 +60,33 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 int index = int.Parse(key);
                 Console.WriteLine(props[index].Name + " | " + properties[key]);
 
+                Type propsType = General.GetType(props[index].PropertyType);
+
                 if (null == properties[key])
                 {
                     constructorArgs[index] = null;
                 }
                 else
                 {
-                    if (props[index].PropertyType == typeof(Int32))
+                    if (propsType == typeof(Int32))
                     {
                         constructorArgs[index] = int.Parse(properties[key]);
                     }
-                    else if (props[index].PropertyType == typeof(string))
+                    else if (propsType == typeof(string))
                     {
                         constructorArgs[index] = properties[key];
                     }
-                    else if (props[index].PropertyType == typeof(TimeSpan?))
+                    else if (propsType == typeof(TimeSpan))
                     {
                         constructorArgs[index] = TimeSpan.Parse(properties[key]);
                     }
-                    else if (props[index].PropertyType == typeof(string[]))
+                    else if (propsType == typeof(string[]))
                     {
                         constructorArgs[index] = properties[key].Split(',');
                     }
-                    else if (props[index].PropertyType == typeof(DumpType?))
+                    else if (propsType.IsEnum)
                     {
-                        constructorArgs[index] = (DumpType)Enum.Parse(typeof(DumpType), properties[key]);
+                        constructorArgs[index] = Enum.Parse(propsType, properties[key]);
                     }
                 }
             }

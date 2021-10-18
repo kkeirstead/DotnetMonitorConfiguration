@@ -18,6 +18,8 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         [BindProperty]
         public string Name { get; set; }
 
+        public static int collectionRuleIndex;
+
         public CollectionRuleCreationModel(ILogger<CollectionRuleCreationModel> logger)
         {
             _logger = logger;
@@ -31,11 +33,20 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
             if (!string.IsNullOrEmpty(Name))
             {
-                CollectionRule collectionRule = new CollectionRule(Name);
+                if (collectionRuleIndex != -1)
+                {
+                    General._collectionRules[collectionRuleIndex].Name = Name;
 
-                General._collectionRules.Add(collectionRule);
+                    TriggerSelectionModel.collectionRuleIndex = collectionRuleIndex;
+                }
+                else
+                {
+                    CollectionRule collectionRule = new CollectionRule(Name);
 
-                TriggerSelectionModel.collectionRuleIndex = General._collectionRules.Count() - 1;
+                    General._collectionRules.Add(collectionRule);
+
+                    TriggerSelectionModel.collectionRuleIndex = General._collectionRules.Count() - 1;
+                }
 
                 return RedirectToPage("./TriggerSelection");
             }

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Reflection;
+using DotnetMonitorConfiguration.Models;
 
 namespace DotnetMonitorConfiguration.Pages.CollectionRules
 {
@@ -19,6 +20,12 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         public string triggerType { get; set; }
 
         public static int collectionRuleIndex;
+
+        public static string GetExistingTriggerTypeName()
+        {
+            CRTrigger trigger = General._collectionRules[collectionRuleIndex]._trigger;
+            return (null != trigger) ? trigger._triggerType.Name : "";
+        }
 
         public TriggerSelectionModel(ILogger<TriggerSelectionModel> logger)
         {

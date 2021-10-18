@@ -13,6 +13,7 @@
 
 <div class="row">
   <div class="column">
+      <form method="post">
       @{
           int index = 0;
        }
@@ -22,6 +23,7 @@
 
          ++index;
        }
+       </form>
   </div>
   <div class="column"><pre><code>@StartModel.GenerateJSON()</code></pre></div>
 </div>

@@ -3,6 +3,7 @@ using DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types;
 using DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DotnetMonitorConfiguration.Models
 {
@@ -48,6 +49,19 @@ namespace DotnetMonitorConfiguration.Models
         {
             Type? underlyingType = Nullable.GetUnderlyingType(t);
             return (underlyingType != null) ? underlyingType : t;
+        }
+
+        public static string GetStringRepresentation(object propertyValue, Type t)
+        {
+            if (t == typeof(string[]))
+            {
+                return string.Join(',', (string[])propertyValue);
+            }
+            else
+            {
+                return propertyValue.ToString(); // Will need to add alternative representations for other types most likely
+            }
+
         }
     }
 }

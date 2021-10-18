@@ -109,14 +109,16 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                     int actionSettingIndex = 0;
                     foreach (var setting in action._actionType.GetProperties())
                     {
-                        currCollectionRule += FormatKVPair(setting, setting.GetValue(action));
-                        
-                        if (actionSettingIndex != action._actionType.GetProperties().Length - 1)
+                        if (null != setting.GetValue(action))
                         {
-                            currCollectionRule += ",";
-                        }
+                            if (actionSettingIndex != 0)
+                            {
+                                currCollectionRule += ",";
+                            }
+                            currCollectionRule += FormatKVPair(setting, setting.GetValue(action));
 
-                        ++actionSettingIndex;
+                            ++actionSettingIndex;
+                        }
                     }
 
                     currCollectionRule += "}"; // end of settings
@@ -179,7 +181,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
             string toReturn = "";
 
-            Type t = setting.PropertyType;
+            Type t = General.GetType(setting.PropertyType);
 
             // Could really use a better solution than this...
             if (t == typeof(Int32))
@@ -203,9 +205,9 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             {
                 toReturn += FormatKVPair(setting.Name, (double?)settingValue);
             }
-            else if (t == typeof(DumpType?))
+            else if (t.IsEnum)
             {
-                toReturn += FormatKVPair(setting.Name, Enum.GetName(typeof(DumpType), (DumpType)settingValue));
+                toReturn += FormatKVPair(setting.Name, Enum.GetName(t, settingValue));
             }
 
             return toReturn;
@@ -259,12 +261,16 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public IActionResult OnPostWay2(string data)
         {
+            CollectionRuleCreationModel.collectionRuleIndex = -1;
+
             return RedirectToPage("./CollectionRuleCreation");
         }
 
         public IActionResult OnPostWay3(string data)
         {
-            return RedirectToPage("./Start"); // May need separate control flow for existing rules. This is temporary loop-back
+            CollectionRuleCreationModel.collectionRuleIndex = int.Parse(data);
+
+            return RedirectToPage("./CollectionRuleCreation");
         }
     }
 }

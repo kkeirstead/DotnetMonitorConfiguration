@@ -32,6 +32,22 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
         }
 
+        public static string GetCurrValue(PropertyInfo propertyInfo)
+        {
+            CRTrigger currTrigger = General._collectionRules[collectionRuleIndex]._trigger;
+
+            if (currTrigger == null)
+            {
+                return "";
+            }
+
+            object propertyValue = propertyInfo.GetValue(currTrigger);
+
+            Type t = propertyInfo.PropertyType;
+
+            return (propertyValue != null) ? General.GetStringRepresentation(propertyValue, t) : ""; // This might not be what we actually want (e.g. for string[])
+        }
+
         public static PropertyInfo[] GetConfigurationSettings()
         {
             var props = triggerType.GetProperties();

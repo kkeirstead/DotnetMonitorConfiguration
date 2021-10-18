@@ -25,7 +25,7 @@
             }
             <div class="sub-label">@General.GetFormatDescription(currType)</div>
 
-            <input asp-for=properties[index.ToString()] placeholder=@propertyInfo.Name value=""/>
+            <input asp-for=properties[index.ToString()] placeholder=@propertyInfo.Name value=@TriggerConfigurationModel.GetCurrValue(propertyInfo)/>
             <br />
             ++index;
         }

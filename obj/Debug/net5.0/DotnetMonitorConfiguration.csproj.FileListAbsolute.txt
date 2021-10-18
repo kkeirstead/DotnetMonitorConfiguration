@@ -66,7 +66,6 @@ C:\Users\kkeirstead\DotnetMonitorConfiguration\bin\Debug\net5.0\ref\DotnetMonito
 C:\Users\kkeirstead\DotnetMonitorConfiguration\bin\Debug\net5.0\DotnetMonitorConfiguration.pdb
 C:\Users\kkeirstead\DotnetMonitorConfiguration\bin\Debug\net5.0\DotnetMonitorConfiguration.Views.dll
 C:\Users\kkeirstead\DotnetMonitorConfiguration\bin\Debug\net5.0\DotnetMonitorConfiguration.Views.pdb
-C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\DotnetMonitorConfiguration.csproj.AssemblyReference.cache
 C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\DotnetMonitorConfiguration.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\DotnetMonitorConfiguration.AssemblyInfoInputs.cache
 C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\DotnetMonitorConfiguration.AssemblyInfo.cs
@@ -107,3 +106,4 @@ C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\DotnetMonitorCon
 C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\DotnetMonitorConfiguration.genruntimeconfig.cache
 C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\DotnetMonitorConfiguration.csproj.CopyComplete
 C:\Users\kkeirstead\DotnetMonitorConfiguration\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\DotnetMonitorConfiguration.csproj.AssemblyReference.cache
