@@ -49,22 +49,29 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             {
                 int index = int.Parse(key);
                 Console.WriteLine(props[index].Name + " | " + properties[key]);
-                
-                if (props[index].PropertyType == typeof(Int32))
+
+                if (null == properties[key])
                 {
-                    constructorArgs[index] = int.Parse(properties[key]);
+                    constructorArgs[index] = null;
                 }
-                else if (props[index].PropertyType == typeof(string))
+                else
                 {
-                    constructorArgs[index] = properties[key];
-                }
-                else if (props[index].PropertyType == typeof(TimeSpan?))
-                {
-                    constructorArgs[index] = TimeSpan.Parse(properties[key]);
-                }
-                else if (props[index].PropertyType == typeof(string[]))
-                {
-                    constructorArgs[index] = properties[key].Split(',');
+                    if (props[index].PropertyType == typeof(Int32))
+                    {
+                        constructorArgs[index] = int.Parse(properties[key]);
+                    }
+                    else if (props[index].PropertyType == typeof(string))
+                    {
+                        constructorArgs[index] = properties[key];
+                    }
+                    else if (props[index].PropertyType == typeof(TimeSpan?))
+                    {
+                        constructorArgs[index] = TimeSpan.Parse(properties[key]);
+                    }
+                    else if (props[index].PropertyType == typeof(string[]))
+                    {
+                        constructorArgs[index] = properties[key].Split(',');
+                    }
                 }
             }
 

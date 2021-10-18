@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -21,6 +22,8 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         public static Type actionType;
 
         public static int collectionRuleIndex;
+
+        public static int actionIndex = -1; // If -1, then creating new one; if has a value, then accessing an existing action
 
         [BindProperty]
         public Dictionary<string, string> properties { get; set; }
@@ -56,26 +59,33 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             {
                 int index = int.Parse(key);
                 Console.WriteLine(props[index].Name + " | " + properties[key]);
-                
-                if (props[index].PropertyType == typeof(Int32))
+
+                if (null == properties[key])
                 {
-                    constructorArgs[index] = int.Parse(properties[key]);
+                    constructorArgs[index] = null;
                 }
-                else if (props[index].PropertyType == typeof(string))
+                else
                 {
-                    constructorArgs[index] = properties[key];
-                }
-                else if (props[index].PropertyType == typeof(TimeSpan?))
-                {
-                    constructorArgs[index] = TimeSpan.Parse(properties[key]);
-                }
-                else if (props[index].PropertyType == typeof(string[]))
-                {
-                    constructorArgs[index] = properties[key].Split(',');
-                }
-                else if (props[index].PropertyType == typeof(DumpType?))
-                {
-                    constructorArgs[index] = (DumpType)Enum.Parse(typeof(DumpType), properties[key]);
+                    if (props[index].PropertyType == typeof(Int32))
+                    {
+                        constructorArgs[index] = int.Parse(properties[key]);
+                    }
+                    else if (props[index].PropertyType == typeof(string))
+                    {
+                        constructorArgs[index] = properties[key];
+                    }
+                    else if (props[index].PropertyType == typeof(TimeSpan?))
+                    {
+                        constructorArgs[index] = TimeSpan.Parse(properties[key]);
+                    }
+                    else if (props[index].PropertyType == typeof(string[]))
+                    {
+                        constructorArgs[index] = properties[key].Split(',');
+                    }
+                    else if (props[index].PropertyType == typeof(DumpType?))
+                    {
+                        constructorArgs[index] = (DumpType)Enum.Parse(typeof(DumpType), properties[key]);
+                    }
                 }
             }
              

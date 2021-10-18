@@ -78,14 +78,16 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 int triggerSettingIndex = 0;
                 foreach (var setting in collectionRule._trigger._triggerType.GetProperties())
                 {
-                    currCollectionRule += FormatKVPair(setting, setting.GetValue(collectionRule._trigger));
-
-                    if (triggerSettingIndex != collectionRule._trigger._triggerType.GetProperties().Length - 1)
+                    if (null != setting.GetValue(collectionRule._trigger))
                     {
-                        currCollectionRule += ",";
-                    }
+                        if (triggerSettingIndex != 0)
+                        {
+                            currCollectionRule += ",";
+                        }
+                        currCollectionRule += FormatKVPair(setting, setting.GetValue(collectionRule._trigger));
 
-                    ++triggerSettingIndex;
+                        ++triggerSettingIndex;
+                    }
                 }
 
                 currCollectionRule += "}"; // end of settings
@@ -134,16 +136,19 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 currCollectionRule += FormatKVPairNonTextValue("Limits", "{");
 
                 int limitSettingIndex = 0;
+
                 foreach (var setting in typeof(CRLimit).GetProperties())
                 {
-                    currCollectionRule += FormatKVPair(setting, setting.GetValue(collectionRule._limit));
-
-                    if (limitSettingIndex != typeof(CRLimit).GetProperties().Length - 1)
+                    if (null != setting.GetValue(collectionRule._limit))
                     {
-                        currCollectionRule += ",";
-                    }
+                        if (limitSettingIndex != 0)
+                        {
+                            currCollectionRule += ",";
+                        }
+                        currCollectionRule += FormatKVPair(setting, setting.GetValue(collectionRule._limit));
 
-                    ++limitSettingIndex;
+                        ++limitSettingIndex;
+                    }
                 }
 
                 currCollectionRule += "}"; // end of limits
@@ -255,6 +260,11 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         public IActionResult OnPostWay2(string data)
         {
             return RedirectToPage("./CollectionRuleCreation");
+        }
+
+        public IActionResult OnPostWay3(string data)
+        {
+            return RedirectToPage("./Start"); // May need separate control flow for existing rules. This is temporary loop-back
         }
     }
 }

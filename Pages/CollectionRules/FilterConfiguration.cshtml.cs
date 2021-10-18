@@ -19,6 +19,8 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static int collectionRuleIndex;
 
+        public static int filterIndex = -1; // If -1, then creating new one; if has a value, then accessing an existing action
+
         [BindProperty]
         public Dictionary<string, string> properties { get; set; }
 

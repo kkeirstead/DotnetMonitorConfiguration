@@ -9,11 +9,20 @@
             <button class="button" type="submit" asp-route-data="Submit" asp-page-handler="Way3" id="submitButton">Done Adding Actions</button>
         </div>
     </fieldset>
+
+    <div class="row-narrow">
+
+        <div class="label">Actions</div>
+    
+        @{
+              int index = 0;
+        }
+
+        @foreach(var crAction in General._collectionRules[ActionCreationModel.collectionRuleIndex]._actions)
+        {
+            <button class="submit-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Way4" id="submitButton">@crAction.GetType().Name</button>
+            ++index;
+        }
+    </div>
 </form>
 
-<div class="row">
-    @foreach(var crAction in General._collectionRules[ActionCreationModel.collectionRuleIndex]._actions)
-    {
-        <a class=".btn button" asp-area="" asp-page="/CollectionRules/TriggerSelection">@crAction</a>
-    }
-</div>

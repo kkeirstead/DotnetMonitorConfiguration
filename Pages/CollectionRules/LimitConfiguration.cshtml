@@ -1,5 +1,6 @@
 ﻿@page
 @using DotnetMonitorConfiguration.Models
+@using System.ComponentModel.DataAnnotations
 @model LimitConfigurationModel
 
 <form method="post">
@@ -14,7 +15,17 @@
             Type? underlyingType = Nullable.GetUnderlyingType(currType);
             currType = (underlyingType != null) ? underlyingType : currType;
 
-            <div class="label">@propertyInfo.Name</div>
+            bool isDefined = Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute));
+
+            if (isDefined)
+            {
+                <div class="label">@propertyInfo.Name *</div>                    
+            }
+            else
+            {
+                <div class="label">@propertyInfo.Name</div>                    
+            }
+            
             <div class="sub-label">@General.GetFormatDescription(currType)</div>
 
             if (currType.IsEnum)

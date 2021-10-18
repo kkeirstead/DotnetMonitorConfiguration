@@ -40,5 +40,13 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             return RedirectToPage("./FilterCreation");
         }
+
+        public IActionResult OnPostWay4(string data)
+        {
+            ActionConfigurationModel.collectionRuleIndex = collectionRuleIndex;
+            ActionConfigurationModel.actionIndex = int.Parse(data);
+
+            return RedirectToPage("./ActionConfiguration");
+        }
     }
 }

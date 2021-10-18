@@ -40,5 +40,13 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             return RedirectToPage("./LimitConfiguration");
         }
+
+        public IActionResult OnPostWay4(string data)
+        {
+            FilterConfigurationModel.collectionRuleIndex = collectionRuleIndex;
+            FilterConfigurationModel.filterIndex = int.Parse(data);
+
+            return RedirectToPage("./FilterConfiguration");
+        }
     }
 }

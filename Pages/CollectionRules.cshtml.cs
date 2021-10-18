@@ -30,7 +30,7 @@ namespace DotnetMonitorConfiguration.Pages
 
         public IActionResult OnPostWay3(string data)
         {
-            return RedirectToPage("./CollectionRules/CollectionRuleCreation");
+            return RedirectToPage("./CollectionRules/Start");
         }
     }
 }

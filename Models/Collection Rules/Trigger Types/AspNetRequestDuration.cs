@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DotnetMonitorConfiguration.Models.BorrowedFromDM;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,16 +13,19 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types
         public AspNetRequestDuration(int requestCount, TimeSpan? requestDuration, TimeSpan? slidingWindowDuration, string[] includePaths, string[] excludePaths)
         {
             RequestCount = requestCount;
-            RequestDuration = requestDuration;
-            SlidingWindowDuration = slidingWindowDuration;
+            RequestDuration = (null != requestDuration) ? requestDuration : RequestDuration;
+            SlidingWindowDuration = (null != slidingWindowDuration) ? slidingWindowDuration : SlidingWindowDuration;
             IncludePaths = includePaths;
             ExcludePaths = excludePaths;
         }
 
+        [Required]
         public int RequestCount { get; set; }
 
+        [DefaultValue(AspNetRequestDurationOptionsDefaults.RequestDuration)]
         public TimeSpan? RequestDuration { get; set; }
 
+        [DefaultValue(AspNetRequestDurationOptionsDefaults.SlidingWindowDuration)]
         public TimeSpan? SlidingWindowDuration { get; set; }
 
         public string[] IncludePaths { get; set; }

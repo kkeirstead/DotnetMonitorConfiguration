@@ -9,11 +9,19 @@
             <button class="button" type="submit" asp-route-data="Submit" asp-page-handler="Way3" id="submitButton">Done Adding Filters</button>
         </div>
     </fieldset>
-</form>
 
-<div class="row">
-    @foreach(var crFilter in General._collectionRules[ActionCreationModel.collectionRuleIndex]._filters)
-    {
-        <a class=".btn button" asp-area="" asp-page="/CollectionRules/TriggerSelection">@crFilter.Key</a>
-    }
-</div>
+    <div class="row-narrow">
+
+        <div class="label">Filters</div>
+    
+        @{
+              int index = 0;
+        }
+
+        @foreach(var crFilter in General._collectionRules[FilterCreationModel.collectionRuleIndex]._filters)
+        {
+            <button class="submit-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Way4" id="submitButton">@crFilter.Key</button>
+            ++index;
+        }
+    </div>
+</form>

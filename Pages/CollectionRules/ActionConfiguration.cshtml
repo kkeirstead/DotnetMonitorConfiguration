@@ -1,5 +1,6 @@
 ﻿@page
 @using DotnetMonitorConfiguration.Models
+@using System.ComponentModel.DataAnnotations
 @model ActionConfigurationModel
 
 <form method="post">
@@ -12,7 +13,16 @@
         {
             Type currType = General.GetType(@propertyInfo.PropertyType);
 
-            <div class="label">@propertyInfo.Name</div>
+            bool isDefined = Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute));
+
+            if (isDefined)
+            {
+                <div class="label">@propertyInfo.Name *</div>                    
+            }
+            else
+            {
+                <div class="label">@propertyInfo.Name</div>                    
+            }
             <div class="sub-label">@General.GetFormatDescription(currType)</div>
 
             if (currType.IsEnum)
