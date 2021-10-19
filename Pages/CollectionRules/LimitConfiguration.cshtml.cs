@@ -38,6 +38,22 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return props;
         }
 
+        public static string GetCurrValue(PropertyInfo propertyInfo)
+        {
+            CRLimit currLimit = General._collectionRules[collectionRuleIndex]._limit;
+
+            if (currLimit == null)
+            {
+                return "";
+            }
+
+            object propertyValue = propertyInfo.GetValue(currLimit);
+
+            Type t = propertyInfo.PropertyType;
+
+            return (propertyValue != null) ? General.GetStringRepresentation(propertyValue, t) : "";
+        }
+
         public IActionResult OnPostWay2(string data)
         {
             var props = GetConfigurationSettings();
@@ -50,25 +66,27 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 int index = int.Parse(key);
                 Console.WriteLine(props[index].Name + " | " + properties[key]);
 
+                Type propsType = General.GetType(props[index].PropertyType);
+
                 if (null == properties[key])
                 {
                     constructorArgs[index] = null;
                 }
                 else
                 {
-                    if (props[index].PropertyType == typeof(Int32))
+                    if (propsType == typeof(Int32))
                     {
                         constructorArgs[index] = int.Parse(properties[key]);
                     }
-                    else if (props[index].PropertyType == typeof(string))
+                    else if (propsType == typeof(string))
                     {
                         constructorArgs[index] = properties[key];
                     }
-                    else if (props[index].PropertyType == typeof(TimeSpan?))
+                    else if (propsType == typeof(TimeSpan))
                     {
                         constructorArgs[index] = TimeSpan.Parse(properties[key]);
                     }
-                    else if (props[index].PropertyType == typeof(string[]))
+                    else if (propsType == typeof(string[]))
                     {
                         constructorArgs[index] = properties[key].Split(',');
                     }

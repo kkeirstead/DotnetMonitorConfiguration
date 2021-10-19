@@ -196,12 +196,12 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             {
                 toReturn += FormatKVPair(setting.Name, (string[])settingValue);
             }
-            else if (t == typeof(TimeSpan?))
+            else if (t == typeof(TimeSpan))
             {
                 TimeSpan? timespan = (TimeSpan?)settingValue;
                 toReturn += FormatKVPair(setting.Name, timespan.ToString());
             }
-            else if (t == typeof(double?))
+            else if (t == typeof(double))
             {
                 toReturn += FormatKVPair(setting.Name, (double?)settingValue);
             }

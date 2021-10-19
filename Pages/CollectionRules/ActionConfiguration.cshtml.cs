@@ -48,6 +48,22 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return props;
         }
 
+        public static string GetCurrValue(PropertyInfo propertyInfo)
+        {
+            if (actionIndex == -1)
+            {
+                return "";
+            }
+
+            CRAction currAction = General._collectionRules[collectionRuleIndex]._actions[actionIndex];
+
+            object propertyValue = propertyInfo.GetValue(currAction);
+
+            Type t = propertyInfo.PropertyType;
+
+            return (propertyValue != null) ? General.GetStringRepresentation(propertyValue, t) : "";
+        }
+
         public IActionResult OnPostWay2(string data)
         {
             var props = GetConfigurationSettings();
@@ -97,7 +113,14 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             action._actionType = actionType;
 
-            General._collectionRules[collectionRuleIndex]._actions.Add(action);
+            if (actionIndex == -1)
+            {
+                General._collectionRules[collectionRuleIndex]._actions.Add(action);
+            }
+            else
+            {
+                General._collectionRules[collectionRuleIndex]._actions[actionIndex] = action;
+            }
 
             ActionCreationModel.collectionRuleIndex = collectionRuleIndex;
 

@@ -19,7 +19,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static int collectionRuleIndex;
 
-        public static int filterIndex = -1; // If -1, then creating new one; if has a value, then accessing an existing action
+        public static int filterIndex = -1; // If -1, then creating new one; if has a value, then accessing an existing filter
 
         [BindProperty]
         public Dictionary<string, string> properties { get; set; }
@@ -40,6 +40,21 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return props;
         }
 
+        public static string GetCurrValue(PropertyInfo propertyInfo)
+        {
+            if (filterIndex == -1)
+            {
+                return "";
+            }
+
+            CRFilter currFilter = General._collectionRules[collectionRuleIndex]._filters[filterIndex];
+
+            object propertyValue = propertyInfo.GetValue(currFilter);
+
+            Type t = propertyInfo.PropertyType;
+
+            return (propertyValue != null) ? General.GetStringRepresentation(propertyValue, t) : "";
+        }
         public IActionResult OnPostWay2(string data)
         {
             var props = GetConfigurationSettings();
@@ -51,22 +66,31 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             {
                 int index = int.Parse(key);
                 Console.WriteLine(props[index].Name + " | " + properties[key]);
-                
-                if (props[index].PropertyType == typeof(Int32))
+
+                Type propsType = General.GetType(props[index].PropertyType);
+
+                if (null == properties[key])
                 {
-                    constructorArgs[index] = int.Parse(properties[key]);
+                    constructorArgs[index] = null;
                 }
-                else if (props[index].PropertyType == typeof(string))
+                else
                 {
-                    constructorArgs[index] = properties[key];
-                }
-                else if (props[index].PropertyType == typeof(TimeSpan?))
-                {
-                    constructorArgs[index] = TimeSpan.Parse(properties[key]);
-                }
-                else if (props[index].PropertyType == typeof(string[]))
-                {
-                    constructorArgs[index] = properties[key].Split(',');
+                    if (propsType == typeof(Int32))
+                    {
+                        constructorArgs[index] = int.Parse(properties[key]);
+                    }
+                    else if (propsType == typeof(string))
+                    {
+                        constructorArgs[index] = properties[key];
+                    }
+                    else if (propsType == typeof(TimeSpan))
+                    {
+                        constructorArgs[index] = TimeSpan.Parse(properties[key]);
+                    }
+                    else if (propsType == typeof(string[]))
+                    {
+                        constructorArgs[index] = properties[key].Split(',');
+                    }
                 }
             }
 

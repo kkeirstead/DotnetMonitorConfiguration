@@ -45,7 +45,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             Type t = propertyInfo.PropertyType;
 
-            return (propertyValue != null) ? General.GetStringRepresentation(propertyValue, t) : ""; // This might not be what we actually want (e.g. for string[])
+            return (propertyValue != null) ? General.GetStringRepresentation(propertyValue, t) : "";
         }
 
         public static PropertyInfo[] GetConfigurationSettings()

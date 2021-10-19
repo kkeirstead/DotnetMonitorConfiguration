@@ -25,18 +25,27 @@
             }
             <div class="sub-label">@General.GetFormatDescription(currType)</div>
 
+            string val = ActionConfigurationModel.GetCurrValue(propertyInfo);
+
             if (currType.IsEnum)
             {
                 <select asp-for=properties[index.ToString()]>
                     @foreach (var enumName in Enum.GetNames(currType))
                     {
-                        <option value=@enumName>@enumName</option>
+                        if (val.Equals(enumName))
+                        {
+                            <option value=@enumName selected>@enumName</option>
+                        }
+                        else
+                        {
+                            <option value=@enumName>@enumName</option>                                
+                        }
                     }
                 </select>
             }
             else
             {
-                <input asp-for=properties[index.ToString()] placeholder=@propertyInfo.Name value=""/>
+                <input asp-for=properties[index.ToString()] placeholder=@propertyInfo.Name value=@val/>
             }
             <br />
             ++index;
