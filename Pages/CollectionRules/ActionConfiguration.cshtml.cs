@@ -28,10 +28,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         [BindProperty]
         public Dictionary<string, string> properties { get; set; }
 
-        [BindProperty]
-        public string Dropdown { get; set; }
-
-
         public ActionConfigurationModel(ILogger<ActionConfigurationModel> logger)
         {
             _logger = logger;

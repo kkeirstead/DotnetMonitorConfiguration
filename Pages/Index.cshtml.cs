@@ -22,7 +22,10 @@ namespace DotnetMonitorConfiguration.Pages
         {
             _logger = logger;
 
+            /*
             string json = "[{\"Filters\": [{\"Key\": \"ProcessName\",\"Value\": \"dotnet\",\"MatchType\": \"Exact\"}],\"Trigger\": {\"Type\": \"EventCounter\",\"Settings\": {\"ProviderName\": \"System.Runtime\",\"CounterName\": \"cpu-usage\",\"GreaterThan\": 70,\"SlidingWindowDuration\": \"00:00:10\"}},\"Actions\": [{\"Type\": \"CollectTrace\",\"Settings\": {\"Profile\": \"Cpu\",\"Duration\": \"00:01:00\"}}],\"Limits\": {\"ActionCount\": 2,\"ActionCountSlidingWindowDuration\": \"1:00:00\"}},{\"Filters\": [{\"Key\": \"ProcessName\",\"Value\": \"dotnet\",\"MatchType\": \"Exact\"}],\"Trigger\": {\"Type\": \"EventCounter\",\"Settings\": {\"ProviderName\": \"System.Runtime\",\"CounterName\": \"cpu-usage\",\"GreaterThan\": 80,\"SlidingWindowDuration\": \"00:00:10\"}},\"Actions\": [{\"Type\": \"CollectTrace\",\"Settings\": {\"Profile\": \"Cpu\",\"Duration\": \"00:11:00\"}}],\"Limits\": {\"ActionCount\": 4,\"ActionCountSlidingWindowDuration\": \"4:00:00\"}}]";
+
+            // [{"Filters": [{"Key": "ProcessName","Value": "dotnet","MatchType": "Exact"}],"Trigger": {"Type": "EventCounter","Settings": {"ProviderName": "System.Runtime","CounterName": "cpu-usage","GreaterThan": 70,"SlidingWindowDuration": "00:00:10"}},"Actions": [{"Type": "CollectTrace","Settings": {"Profile": "Cpu","Duration": "00:01:00"}}],"Limits": {"ActionCount": 2,"ActionCountSlidingWindowDuration": "1:00:00"}},{"Filters": [{"Key": "ProcessName","Value": "dotnet","MatchType": "Exact"}],"Trigger": {"Type": "EventCounter","Settings": {"ProviderName": "System.Runtime","CounterName": "cpu-usage","GreaterThan": 80,"SlidingWindowDuration": "00:00:10"}},"Actions": [{"Type": "CollectTrace","Settings": {"Profile": "Cpu","Duration": "00:04:00"}}],"Limits": {"ActionCount": 3,"ActionCountSlidingWindowDuration": "2:00:00"}}]
 
             CollectionRuleOptions[] rules = JsonConvert.DeserializeObject<CollectionRuleOptions[]>(json);
 
@@ -100,13 +103,6 @@ namespace DotnetMonitorConfiguration.Pages
 
                 tempRule._filters = rule.Filters;
 
-
-
-
-
-
-
-
                 foreach (var action in rule.Actions)
                 {
                     Type actionType = Type.GetType("DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types." + action.Type);
@@ -174,21 +170,12 @@ namespace DotnetMonitorConfiguration.Pages
                     tempRule._actions.Add(crAction);
                 }
 
-
-
-
-
-
-
-
-
-
-
                 General._collectionRules.Add(tempRule);
 
                 ++collectionRuleIndex;
             }
-        } 
+            */
+        }
 
         public void OnGet()
         {
