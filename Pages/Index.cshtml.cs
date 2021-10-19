@@ -27,6 +27,10 @@ namespace DotnetMonitorConfiguration.Pages
 
             // [{"Filters": [{"Key": "ProcessName","Value": "dotnet","MatchType": "Exact"}],"Trigger": {"Type": "EventCounter","Settings": {"ProviderName": "System.Runtime","CounterName": "cpu-usage","GreaterThan": 70,"SlidingWindowDuration": "00:00:10"}},"Actions": [{"Type": "CollectTrace","Settings": {"Profile": "Cpu","Duration": "00:01:00"}}],"Limits": {"ActionCount": 2,"ActionCountSlidingWindowDuration": "1:00:00"}},{"Filters": [{"Key": "ProcessName","Value": "dotnet","MatchType": "Exact"}],"Trigger": {"Type": "EventCounter","Settings": {"ProviderName": "System.Runtime","CounterName": "cpu-usage","GreaterThan": 80,"SlidingWindowDuration": "00:00:10"}},"Actions": [{"Type": "CollectTrace","Settings": {"Profile": "Cpu","Duration": "00:04:00"}}],"Limits": {"ActionCount": 3,"ActionCountSlidingWindowDuration": "2:00:00"}}]
 
+            // {"HighCpuRule":{"Filters": [{"Key": "ProcessName","Value": "dotnet","MatchType": "Exact"}],"Trigger": {"Type": "EventCounter","Settings": {"ProviderName": "System.Runtime","CounterName": "cpu-usage","GreaterThan": 70,"SlidingWindowDuration": "00:00:10"}},"Actions": [{"Type": "CollectTrace","Settings": {"Profile": "Cpu","Duration": "00:01:00"}}],"Limits": {"ActionCount": 2,"ActionCountSlidingWindowDuration": "1:00:00"}}}
+
+
+
             CollectionRuleOptions[] rules = JsonConvert.DeserializeObject<CollectionRuleOptions[]>(json);
 
             int collectionRuleIndex = 0;

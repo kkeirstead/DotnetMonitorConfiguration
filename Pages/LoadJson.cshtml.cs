@@ -37,13 +37,21 @@ namespace DotnetMonitorConfiguration.Pages
 
             if (!string.IsNullOrEmpty(JsonRules))
             {
+                Dictionary<string, object> ruleNamesAndBodies = JsonConvert.DeserializeObject<Dictionary<string,object>>(JsonRules);
 
-                CollectionRuleOptions[] rules = JsonConvert.DeserializeObject<CollectionRuleOptions[]>(JsonRules);
+                List<CollectionRuleOptions> rules = new List<CollectionRuleOptions>() ;
+                List<string> ruleNames = new List<string>();
+
+                foreach (var entryKey in ruleNamesAndBodies.Keys)
+                {
+                    rules.Add(JsonConvert.DeserializeObject<CollectionRuleOptions>(ruleNamesAndBodies[entryKey].ToString()));
+                    ruleNames.Add(entryKey);
+                }
 
                 int collectionRuleIndex = 0;
                 foreach (CollectionRuleOptions rule in rules)
                 {
-                    CollectionRule tempRule = new CollectionRule("temp" + collectionRuleIndex.ToString());
+                    CollectionRule tempRule = new CollectionRule(ruleNames[collectionRuleIndex]);
 
                     Type triggerType = Type.GetType("DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types." + rule.Trigger.Type);
 

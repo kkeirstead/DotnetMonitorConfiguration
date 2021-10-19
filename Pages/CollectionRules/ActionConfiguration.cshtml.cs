@@ -96,6 +96,10 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                     {
                         constructorArgs[index] = properties[key].Split(',');
                     }
+                    else if (propsType == typeof(double))
+                    {
+                        constructorArgs[index] = Convert.ToDouble(properties[key]);
+                    }
                     else if (propsType.IsEnum)
                     {
                         constructorArgs[index] = Enum.Parse(propsType, properties[key]);

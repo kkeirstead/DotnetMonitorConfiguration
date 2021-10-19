@@ -1,4 +1,5 @@
-﻿using DotnetMonitorConfiguration.Models.Collection_Rules;
+﻿using DotnetMonitorConfiguration.Models;
+using DotnetMonitorConfiguration.Models.Collection_Rules;
 using DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -43,8 +44,11 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public IActionResult OnPostWay4(string data)
         {
+            int actionIndex = int.Parse(data);
+
             ActionConfigurationModel.collectionRuleIndex = collectionRuleIndex;
-            ActionConfigurationModel.actionIndex = int.Parse(data);
+            ActionConfigurationModel.actionIndex = actionIndex;
+            ActionConfigurationModel.actionType = General._collectionRules[collectionRuleIndex]._actions[actionIndex]._actionType;
 
             return RedirectToPage("./ActionConfiguration");
         }
