@@ -107,3 +107,5 @@ C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\DotnetMonitorCon
 C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\DotnetMonitorConfiguration.csproj.CopyComplete
 C:\Users\kkeirstead\DotnetMonitorConfiguration\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\DotnetMonitorConfiguration.csproj.AssemblyReference.cache
+C:\Users\kkeirstead\DotnetMonitorConfiguration\bin\Debug\net5.0\Namotion.Reflection.dll
+C:\Users\kkeirstead\DotnetMonitorConfiguration\bin\Debug\net5.0\NJsonSchema.dll

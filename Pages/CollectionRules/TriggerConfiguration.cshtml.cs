@@ -80,7 +80,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                     {
                         constructorArgs[index] = properties[key];
                     }
-                    else if (props[index].PropertyType == typeof(TimeSpan?))
+                    else if (props[index].PropertyType == typeof(TimeSpan))
                     {
                         constructorArgs[index] = TimeSpan.Parse(properties[key]);
                     }

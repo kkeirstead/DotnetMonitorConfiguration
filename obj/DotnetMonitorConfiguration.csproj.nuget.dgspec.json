@@ -43,6 +43,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "NJsonSchema": {
+              "target": "Package",
+              "version": "[10.5.2, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
