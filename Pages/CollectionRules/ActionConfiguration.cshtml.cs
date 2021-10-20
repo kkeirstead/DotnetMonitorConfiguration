@@ -70,45 +70,12 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             foreach (var key in properties.Keys)
             {
                 int index = int.Parse(key);
-                Console.WriteLine(props[index].Name + " | " + properties[key]);
 
-                Type propsType = General.GetType(props[index].PropertyType);
-
-                if (null == properties[key])
-                {
-                    constructorArgs[index] = null;
-                }
-                else
-                {
-                    if (propsType == typeof(Int32))
-                    {
-                        constructorArgs[index] = int.Parse(properties[key]);
-                    }
-                    else if (propsType == typeof(string))
-                    {
-                        constructorArgs[index] = properties[key];
-                    }
-                    else if (propsType == typeof(TimeSpan))
-                    {
-                        constructorArgs[index] = TimeSpan.Parse(properties[key]);
-                    }
-                    else if (propsType == typeof(string[]))
-                    {
-                        constructorArgs[index] = properties[key].Split(',');
-                    }
-                    else if (propsType == typeof(double))
-                    {
-                        constructorArgs[index] = Convert.ToDouble(properties[key]);
-                    }
-                    else if (propsType.IsEnum)
-                    {
-                        constructorArgs[index] = Enum.Parse(propsType, properties[key]);
-                    }
-                }
+                constructorArgs[index] = General.GetConstructorArgs(props[index], properties[key]);
             }
              
             var ctors = actionType.GetConstructors();
-
+             
             CRAction action = (CRAction)ctors[0].Invoke(constructorArgs);
 
             action._actionType = actionType;

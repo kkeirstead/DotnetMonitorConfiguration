@@ -25,6 +25,8 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static string GenerateJSON()
         {
+            RemoveBadCollectionRules();
+
             Console.WriteLine("Top of Generate.");
             // Fair warning, this is currently a mess. Will be straightened up later.
 
@@ -175,6 +177,17 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             dynamic parsedJson = JsonConvert.DeserializeObject(jsonString);
             return JsonConvert.SerializeObject(parsedJson, Formatting.Indented);
+        }
+
+        private static void RemoveBadCollectionRules()
+        {
+            for (int index = General._collectionRules.Count - 1; index >= 0; --index)
+            {
+                if (null == General._collectionRules[index]._trigger)
+                {
+                    General._collectionRules.RemoveAt(index);
+                }
+            }
         }
 
         private static string FormatKVPair(PropertyInfo setting, object settingValue)

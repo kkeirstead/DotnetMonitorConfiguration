@@ -75,34 +75,7 @@ namespace DotnetMonitorConfiguration.Pages
                         {
                             if (triggerKey.Equals(currKey))
                             {
-                                if (propsType == typeof(Int32))
-                                {
-                                    triggerConstructorArgs[triggerSettingIndex] = (int)triggerSettings[triggerKey];
-                                }
-                                else if (propsType == typeof(string))
-                                {
-                                    triggerConstructorArgs[triggerSettingIndex] = triggerSettings[triggerKey];
-                                }
-                                else if (propsType == typeof(TimeSpan))
-                                {
-                                    triggerConstructorArgs[triggerSettingIndex] = TimeSpan.Parse((string)triggerSettings[triggerKey]);
-                                }
-                                else if (propsType == typeof(string[]))
-                                {
-                                    triggerConstructorArgs[triggerSettingIndex] = (string[])triggerSettings[triggerKey];
-                                }
-                                else if (propsType == typeof(double))
-                                {
-                                    triggerConstructorArgs[triggerSettingIndex] = Convert.ToDouble(triggerSettings[triggerKey]);
-                                }
-                                else if (propsType.IsEnum)
-                                {
-                                    triggerConstructorArgs[triggerSettingIndex] = Enum.Parse(propsType, (string)triggerSettings[triggerKey]);
-                                }
-                                else
-                                {
-                                    triggerConstructorArgs[triggerSettingIndex] = triggerSettings[triggerKey];
-                                }
+                                triggerConstructorArgs[triggerSettingIndex] = General.GetConstructorArgsLoaded(prop, triggerSettings[triggerKey]);
 
                                 break;
                             }
@@ -146,34 +119,7 @@ namespace DotnetMonitorConfiguration.Pages
                             {
                                 if (actionKey.Equals(currKey))
                                 {
-                                    if (propsType == typeof(Int32))
-                                    {
-                                        actionConstructorArgs[actionSettingIndex] = (int)actionSettings[actionKey];
-                                    }
-                                    else if (propsType == typeof(string))
-                                    {
-                                        actionConstructorArgs[actionSettingIndex] = actionSettings[actionKey];
-                                    }
-                                    else if (propsType == typeof(TimeSpan))
-                                    {
-                                        actionConstructorArgs[actionSettingIndex] = TimeSpan.Parse((string)actionSettings[actionKey]);
-                                    }
-                                    else if (propsType == typeof(string[]))
-                                    {
-                                        actionConstructorArgs[actionSettingIndex] = (string[])actionSettings[actionKey];
-                                    }
-                                    else if (propsType == typeof(double))
-                                    {
-                                        actionConstructorArgs[actionSettingIndex] = Convert.ToDouble(actionSettings[actionKey]);
-                                    }
-                                    else if (propsType.IsEnum)
-                                    {
-                                        actionConstructorArgs[actionSettingIndex] = Enum.Parse(propsType, (string)actionSettings[actionKey]);
-                                    }
-                                    else
-                                    {
-                                        actionConstructorArgs[actionSettingIndex] = actionSettings[actionKey];
-                                    }
+                                    actionConstructorArgs[actionSettingIndex] = General.GetConstructorArgsLoaded(prop, actionSettings[actionKey]);
 
                                     break;
                                 }

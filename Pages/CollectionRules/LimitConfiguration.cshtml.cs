@@ -64,33 +64,8 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             foreach (var key in properties.Keys)
             {
                 int index = int.Parse(key);
-                Console.WriteLine(props[index].Name + " | " + properties[key]);
 
-                Type propsType = General.GetType(props[index].PropertyType);
-
-                if (null == properties[key])
-                {
-                    constructorArgs[index] = null;
-                }
-                else
-                {
-                    if (propsType == typeof(Int32))
-                    {
-                        constructorArgs[index] = int.Parse(properties[key]);
-                    }
-                    else if (propsType == typeof(string))
-                    {
-                        constructorArgs[index] = properties[key];
-                    }
-                    else if (propsType == typeof(TimeSpan))
-                    {
-                        constructorArgs[index] = TimeSpan.Parse(properties[key]);
-                    }
-                    else if (propsType == typeof(string[]))
-                    {
-                        constructorArgs[index] = properties[key].Split(',');
-                    }
-                }
+                constructorArgs[index] = General.GetConstructorArgs(props[index], properties[key]);
             }
 
             var ctors = typeof(CRLimit).GetConstructors();

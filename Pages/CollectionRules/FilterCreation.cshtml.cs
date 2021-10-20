@@ -30,6 +30,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         public IActionResult OnPostWay2(string data)
         {
             FilterConfigurationModel.collectionRuleIndex = collectionRuleIndex;
+            FilterConfigurationModel.filterIndex = -1;
 
             return RedirectToPage("./FilterConfiguration");
         }

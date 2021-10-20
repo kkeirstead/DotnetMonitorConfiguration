@@ -4,6 +4,7 @@ using DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace DotnetMonitorConfiguration.Models
 {
@@ -62,6 +63,82 @@ namespace DotnetMonitorConfiguration.Models
                 return propertyValue.ToString(); // Will need to add alternative representations for other types most likely
             }
 
+        }
+
+        public static object GetConstructorArgs(PropertyInfo propertyInfo, string propertyValue)
+        {
+            Type propsType = GetType(propertyInfo.PropertyType);
+
+            if (null == propertyValue)
+            {
+                return null;
+            }
+            else
+            {
+                if (propsType == typeof(Int32))
+                {
+                    return int.Parse(propertyValue);
+                }
+                else if (propsType == typeof(string))
+                {
+                    return propertyValue;
+                }
+                else if (propsType == typeof(TimeSpan))
+                {
+                    return TimeSpan.Parse(propertyValue);
+                }
+                else if (propsType == typeof(string[]))
+                {
+                    return propertyValue.Split(',');
+                }
+                else if (propsType == typeof(double))
+                {
+                    return Convert.ToDouble(propertyValue);
+                }
+                else if (propsType.IsEnum)
+                {
+                    return Enum.Parse(propsType, propertyValue);
+                }
+            }
+
+            return null;
+        }
+
+        public static object GetConstructorArgsLoaded(PropertyInfo propertyInfo, object propertyValue)
+        {
+            if (actionKey.Equals(currKey))
+            {
+                if (propsType == typeof(Int32))
+                {
+                    actionConstructorArgs[actionSettingIndex] = (int)actionSettings[actionKey];
+                }
+                else if (propsType == typeof(string))
+                {
+                    actionConstructorArgs[actionSettingIndex] = actionSettings[actionKey];
+                }
+                else if (propsType == typeof(TimeSpan))
+                {
+                    actionConstructorArgs[actionSettingIndex] = TimeSpan.Parse((string)actionSettings[actionKey]);
+                }
+                else if (propsType == typeof(string[]))
+                {
+                    actionConstructorArgs[actionSettingIndex] = (string[])actionSettings[actionKey];
+                }
+                else if (propsType == typeof(double))
+                {
+                    actionConstructorArgs[actionSettingIndex] = Convert.ToDouble(actionSettings[actionKey]);
+                }
+                else if (propsType.IsEnum)
+                {
+                    actionConstructorArgs[actionSettingIndex] = Enum.Parse(propsType, (string)actionSettings[actionKey]);
+                }
+                else
+                {
+                    actionConstructorArgs[actionSettingIndex] = actionSettings[actionKey];
+                }
+
+                break;
+            }
         }
     }
 }
