@@ -11,25 +11,28 @@
 </form>
 
 
-<div class="row">
-  <div class="column">
-      <form method="post">
-      @{
-          int index = 0;
-       }
-          @foreach(var collectionRule in General._collectionRules)
-           {
-            <div class="column-ultra-wide">
-                 <button class="button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Way3" id="submitButton">@collectionRule.Name</button>
-            </div>
+<div class="row-narrow">
+    <form method="post">
+    @{
+        int index = 0;
+    }
+        @foreach(var collectionRule in General._collectionRules)
+        {
+        <div class="column-ultra-wide">
+                <button class="button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Way3" id="submitButton">@collectionRule.Name</button>
+        </div>
 
-            <div class="column-ultra-narrow">
-                 <button class="delete-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Delete" id="submitButton">X</button>
-            </div>
+        <div class="column-ultra-narrow">
+                <button class="delete-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Delete" id="submitButton">X</button>
+        </div>
 
-             ++index;
-           }
-       </form>
-  </div>
+            ++index;
+        }
+    </form>
+ </div>
+
+ <br />
+
+ <div class = "row-narrow">
   <div class="column"><pre><code>@StartModel.GenerateJSON()</code></pre></div>
 </div>
