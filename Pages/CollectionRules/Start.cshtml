@@ -5,7 +5,7 @@
 <form method="post">
     <fieldset>
         <div class="text-center">
-            <button class="button" type="submit" asp-route-data="Submit" asp-page-handler="Way2" id="submitButton">New Collection Rule</button>
+            <button class="submit-button" type="submit" asp-route-data="Submit" asp-page-handler="Way2" id="submitButton">New Collection Rule</button>
         </div>
     </fieldset>
 </form>
@@ -13,9 +13,12 @@
 
 <div class="row-narrow">
     <form method="post">
-    @{
-        int index = 0;
-    }
+        @{
+            int index = 0;
+        }
+
+        <div class="label">Collection Rules</div>
+
         @foreach(var collectionRule in General._collectionRules)
         {
         <div class="column-ultra-wide">
@@ -34,5 +37,8 @@
  <br />
 
  <div class = "row-narrow">
-  <div class="column"><pre><code>@StartModel.GenerateJSON()</code></pre></div>
+
+    <div class="label">JSON Output</div>
+
+    <div class="column"><pre><code>@StartModel.GenerateJSON()</code></pre></div>
 </div>
