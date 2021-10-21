@@ -11,8 +11,10 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
 {
     public class CollectLogs : CRAction
     {
-        public CollectLogs(LogLevel? defaultLevel, Dictionary<string, LogLevel?> filterSpecs, bool? useAppFilters, TimeSpan? duration, string egress, LogFormat? format)
+        public CollectLogs(string name, bool? waitForCompletion, LogLevel? defaultLevel, Dictionary<string, LogLevel?> filterSpecs, bool? useAppFilters, TimeSpan? duration, string egress, LogFormat? format)
         {
+            Name = name;
+            WaitForCompletion = waitForCompletion;
             DefaultLevel = (null != defaultLevel) ? defaultLevel : DefaultLevel;
             FilterSpecs = filterSpecs;
             UseAppFilters = (null != useAppFilters) ? useAppFilters : UseAppFilters;
@@ -20,6 +22,10 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
             Egress = egress;
             Format = (null != format) ? format : Format;
         }
+
+        public string Name { get; set; }
+
+        public bool? WaitForCompletion { get; set; }
 
         [DefaultValue(CollectLogsOptionsDefaults.DefaultLevel)]
         public LogLevel? DefaultLevel { get; set; }

@@ -11,39 +11,34 @@
         }
         @foreach(var propertyInfo in LimitConfigurationModel.GetConfigurationSettings())
         {
-            Type currType = @propertyInfo.PropertyType;
-            Type? underlyingType = Nullable.GetUnderlyingType(currType);
-            currType = (underlyingType != null) ? underlyingType : currType;
+            Type currType = General.GetType(@propertyInfo.PropertyType);
 
-            bool isDefined = Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute));
+            bool isRequired = Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute));
 
-            if (isDefined)
-            {
-                <div class="label">@propertyInfo.Name *</div>                    
-            }
-            else
-            {
-                <div class="label">@propertyInfo.Name</div>                    
-            }
-            
+            string nameValue = propertyInfo.Name + ((isRequired) ? "*" : "");
+
+            <div class="label">@nameValue</div>                    
+
             <div class="sub-label">@General.GetFormatDescription(currType)</div>
 
-            string val = @LimitConfigurationModel.GetCurrValue(propertyInfo);
+            string val = LimitConfigurationModel.GetCurrValue(propertyInfo);
 
-            if (currType.IsEnum)
+            if (currType.IsEnum || (currType == typeof(bool)))
             {
+                List<string> names = General.GetEnumNames(currType, isRequired);
+
                 <select asp-for=properties[index.ToString()]>
-                    @foreach (var enumName in Enum.GetNames(currType))
+                @foreach (var enumName in names)
+                {
+                    if (val.Equals(enumName))
                     {
-                        if (val.Equals(enumName))
-                        {
-                            <option value=@enumName selected>@enumName</option>
-                        }
-                        else
-                        {
-                            <option value=@enumName>@enumName</option>                                
-                        }
+                        <option value=@enumName selected>@enumName</option>
                     }
+                    else
+                    {
+                        <option value=@enumName>@enumName</option>
+                    }
+                }
                 </select>
             }
             else

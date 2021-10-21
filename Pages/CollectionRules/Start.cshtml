@@ -17,12 +17,18 @@
       @{
           int index = 0;
        }
-      @foreach(var collectionRule in General._collectionRules)
-       {
-         <button class="button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Way3" id="submitButton">@collectionRule.Name</button>
+          @foreach(var collectionRule in General._collectionRules)
+           {
+            <div class="column-wide">
+                 <button class="button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Way3" id="submitButton">@collectionRule.Name</button>
+            </div>
 
-         ++index;
-       }
+            <div class="column-narrow">
+                 <button class="delete-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Way4" id="submitButton">X</button>
+            </div>
+
+             ++index;
+           }
        </form>
   </div>
   <div class="column"><pre><code>@StartModel.GenerateJSON()</code></pre></div>

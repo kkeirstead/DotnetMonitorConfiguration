@@ -47,34 +47,27 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 return "";
             }
 
-            object propertyValue = propertyInfo.GetValue(currLimit);
-
-            Type t = propertyInfo.PropertyType;
-
-            return (propertyValue != null) ? General.GetStringRepresentation(propertyValue, t) : "";
+            return General.GetStringRepresentation(currLimit, propertyInfo);
         }
 
         public IActionResult OnPostWay2(string data)
         {
-            var props = GetConfigurationSettings();
+            var typeProperties = GetConfigurationSettings();
 
-            object[] constructorArgs = new object[props.Length];
+            object[] constructorArgs = General.GetConstructorArgs(typeProperties, properties);
 
-            // This code is being reused in multiple places -> consider a shared function that knows how to parse everything
-            foreach (var key in properties.Keys)
+            if (null != constructorArgs)
             {
-                int index = int.Parse(key);
+                var ctors = typeof(CRLimit).GetConstructors();
 
-                constructorArgs[index] = General.GetConstructorArgs(props[index], properties[key]);
+                CRLimit limit = (CRLimit)ctors[0].Invoke(constructorArgs);
+
+                General._collectionRules[collectionRuleIndex]._limit = limit;
+
+                return RedirectToPage("./Start");
             }
 
-            var ctors = typeof(CRLimit).GetConstructors();
-
-            CRLimit limit = (CRLimit)ctors[0].Invoke(constructorArgs);
-
-            General._collectionRules[collectionRuleIndex]._limit = limit;
-
-            return RedirectToPage("./Start");
+            return null;
         }
     }
 }

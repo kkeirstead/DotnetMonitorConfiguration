@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -49,35 +50,28 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             CRFilter currFilter = General._collectionRules[collectionRuleIndex]._filters[filterIndex];
 
-            object propertyValue = propertyInfo.GetValue(currFilter);
-
-            Type t = propertyInfo.PropertyType;
-
-            return (propertyValue != null) ? General.GetStringRepresentation(propertyValue, t) : "";
+            return General.GetStringRepresentation(currFilter, propertyInfo);
         }
         public IActionResult OnPostWay2(string data)
         {
-            var props = GetConfigurationSettings();
+            var typeProperties = GetConfigurationSettings();
 
-            object[] constructorArgs = new object[props.Length];
+            object[] constructorArgs = General.GetConstructorArgs(typeProperties, properties);
 
-            // This code is being reused in multiple places -> consider a shared function that knows how to parse everything
-            foreach (var key in properties.Keys)
+            if (null != constructorArgs)
             {
-                int index = int.Parse(key);
+                var ctors = typeof(CRFilter).GetConstructors();
 
-                constructorArgs[index] = General.GetConstructorArgs(props[index], properties[key]);
+                CRFilter filter = (CRFilter)ctors[0].Invoke(constructorArgs);
+
+                General._collectionRules[collectionRuleIndex]._filters.Add(filter);
+
+                FilterCreationModel.collectionRuleIndex = collectionRuleIndex;
+
+                return RedirectToPage("./FilterCreation");
             }
 
-            var ctors = typeof(CRFilter).GetConstructors();
-
-            CRFilter filter = (CRFilter)ctors[0].Invoke(constructorArgs);
-
-            General._collectionRules[collectionRuleIndex]._filters.Add(filter);
-
-            FilterCreationModel.collectionRuleIndex = collectionRuleIndex;
-
-            return RedirectToPage("./FilterCreation");
+            return null;
         }
     }
 }

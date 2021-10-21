@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -41,11 +42,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 return "";
             }
 
-            object propertyValue = propertyInfo.GetValue(currTrigger);
-
-            Type t = propertyInfo.PropertyType;
-
-            return (propertyValue != null) ? General.GetStringRepresentation(propertyValue, t) : "";
+            return General.GetStringRepresentation(currTrigger, propertyInfo);
         }
 
         public static PropertyInfo[] GetConfigurationSettings()
@@ -57,27 +54,25 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public IActionResult OnPostWay2(string data)
         {
-            var props = GetConfigurationSettings();
+            var typeProperties = GetConfigurationSettings();
 
-            object[] constructorArgs = new object[props.Length];
+            object[] constructorArgs = General.GetConstructorArgs(typeProperties, properties);
 
-            foreach (var key in properties.Keys)
+            if (null != constructorArgs)
             {
-                int index = int.Parse(key);
+                var ctors = triggerType.GetConstructors();
 
-                constructorArgs[index] = General.GetConstructorArgs(props[index], properties[key]);
+                CRTrigger trigger = (CRTrigger)ctors[0].Invoke(constructorArgs);
+                trigger._triggerType = triggerType;
+
+                General._collectionRules[collectionRuleIndex]._trigger = trigger;
+
+                ActionCreationModel.collectionRuleIndex = collectionRuleIndex;
+
+                return RedirectToPage("./ActionCreation");
             }
 
-            var ctors = triggerType.GetConstructors();
-
-            CRTrigger trigger = (CRTrigger)ctors[0].Invoke(constructorArgs);
-            trigger._triggerType = triggerType; 
-
-            General._collectionRules[collectionRuleIndex]._trigger = trigger;
-
-            ActionCreationModel.collectionRuleIndex = collectionRuleIndex;
-
-            return RedirectToPage("./ActionCreation");
+            return null;
         }
     }
 }

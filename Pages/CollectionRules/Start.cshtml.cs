@@ -102,16 +102,30 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 {
                     currCollectionRule += "{";
 
-                    currCollectionRule += FormatKVPair("Type", (action._actionType).Name); // Pay special attention to whether this is correct
+                    currCollectionRule += FormatKVPair("Type", (action._actionType).Name);
 
                     currCollectionRule += ",";
+
+                    if (!string.IsNullOrEmpty(action.Name))
+                    {
+                        currCollectionRule += FormatKVPair("Name", action.Name);
+
+                        currCollectionRule += ",";
+                    }
+
+                    if (action.WaitForCompletion != null)
+                    {
+                        currCollectionRule += FormatKVPair("WaitForCompletion", action.WaitForCompletion.Value);
+
+                        currCollectionRule += ",";
+                    }
 
                     currCollectionRule += FormatKVPairNonTextValue("Settings", "{");
 
                     int actionSettingIndex = 0;
                     foreach (var setting in action._actionType.GetProperties())
                     {
-                        if (null != setting.GetValue(action))
+                        if (null != setting.GetValue(action) && !setting.Name.Equals("Name") && !setting.Name.Equals("WaitForCompletion"))
                         {
                             if (actionSettingIndex != 0)
                             {
@@ -179,11 +193,28 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return JsonConvert.SerializeObject(parsedJson, Formatting.Indented);
         }
 
+        public static string GenerateJSON2()
+        {
+            RemoveBadCollectionRules();
+
+            List<CollectionRuleOptions> collectionRuleOptions = new List<CollectionRuleOptions>();
+
+            foreach (var rule in General._collectionRules)
+            {
+                collectionRuleOptions.Add(General.SerializeCollectionRule(rule));
+            }
+
+            // Need to do more work here to massage the output into what we want.
+
+            return JsonConvert.SerializeObject(collectionRuleOptions, Formatting.Indented);
+        }
+
+
         private static void RemoveBadCollectionRules()
         {
             for (int index = General._collectionRules.Count - 1; index >= 0; --index)
             {
-                if (null == General._collectionRules[index]._trigger)
+                if (null == General._collectionRules[index]._trigger || null == General._collectionRules[index]._limit)
                 {
                     General._collectionRules.RemoveAt(index);
                 }
@@ -201,7 +232,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             {
                 toReturn += FormatKVPair(setting.Name, (int)settingValue);
             }
-            else if (t == typeof(string) || t == typeof(bool))
+            else if (t == typeof(string))
             {
                 toReturn += FormatKVPair(setting.Name, (string)settingValue);
             }
@@ -218,6 +249,10 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             {
                 toReturn += FormatKVPair(setting.Name, (double?)settingValue);
             }
+            else if (t == typeof(bool))
+            {
+                toReturn += FormatKVPair(setting.Name, (bool)settingValue);
+            }
             else if (t.IsEnum)
             {
                 toReturn += FormatKVPair(setting.Name, Enum.GetName(t, settingValue));
@@ -229,6 +264,11 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         private static string FormatKVPair(string key, string value)
         {
             return "\"" + key + "\": " + "\"" + value + "\"";
+        }
+
+        private static string FormatKVPair(string key, bool value)
+        {
+            return "\"" + key + "\": " + value.ToString().ToLower();
         }
 
         private static string FormatKVPairNonTextValue(string key, string value)
@@ -284,6 +324,15 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             CollectionRuleCreationModel.collectionRuleIndex = int.Parse(data);
 
             return RedirectToPage("./CollectionRuleCreation");
+        }
+
+        public IActionResult OnPostWay4(string data)
+        {
+            int indexToDelete = int.Parse(data);
+
+            General._collectionRules.RemoveAt(indexToDelete);
+
+            return null;
         }
     }
 }

@@ -50,6 +50,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
                 return RedirectToPage("./TriggerSelection");
             }
+
             return null;
         }
     }

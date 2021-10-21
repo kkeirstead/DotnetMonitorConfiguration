@@ -53,45 +53,38 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             CRAction currAction = General._collectionRules[collectionRuleIndex]._actions[actionIndex];
 
-            object propertyValue = propertyInfo.GetValue(currAction);
-
-            Type t = propertyInfo.PropertyType;
-
-            return (propertyValue != null) ? General.GetStringRepresentation(propertyValue, t) : "";
+            return General.GetStringRepresentation(currAction, propertyInfo);
         }
 
         public IActionResult OnPostWay2(string data)
         {
-            var props = GetConfigurationSettings();
+            var typeProperties = GetConfigurationSettings();
 
-            object[] constructorArgs = new object[props.Length];
+            object[] constructorArgs = General.GetConstructorArgs(typeProperties, properties);
 
-            // This code is being reused in multiple places -> consider a shared function that knows how to parse everything
-            foreach (var key in properties.Keys)
+            if (null != constructorArgs)
             {
-                int index = int.Parse(key);
+                var ctors = actionType.GetConstructors();
 
-                constructorArgs[index] = General.GetConstructorArgs(props[index], properties[key]);
+                CRAction action = (CRAction)ctors[0].Invoke(constructorArgs);
+
+                action._actionType = actionType;
+
+                if (actionIndex == -1)
+                {
+                    General._collectionRules[collectionRuleIndex]._actions.Add(action);
+                }
+                else
+                {
+                    General._collectionRules[collectionRuleIndex]._actions[actionIndex] = action;
+                }
+
+                ActionCreationModel.collectionRuleIndex = collectionRuleIndex;
+
+                return RedirectToPage("./ActionCreation");
             }
-             
-            var ctors = actionType.GetConstructors();
-             
-            CRAction action = (CRAction)ctors[0].Invoke(constructorArgs);
 
-            action._actionType = actionType;
-
-            if (actionIndex == -1)
-            {
-                General._collectionRules[collectionRuleIndex]._actions.Add(action);
-            }
-            else
-            {
-                General._collectionRules[collectionRuleIndex]._actions[actionIndex] = action;
-            }
-
-            ActionCreationModel.collectionRuleIndex = collectionRuleIndex;
-
-            return RedirectToPage("./ActionCreation");
+            return null;
         }
     }
 }

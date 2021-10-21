@@ -11,7 +11,7 @@ namespace DotnetMonitorConfiguration.Models.BorrowedFromDM
     /// Options for describing the type of trigger and the settings to pass to that trigger.
     /// </summary>
     [DebuggerDisplay("Trigger: Type = {Type}")]
-    internal sealed partial class CollectionRuleTriggerOptions
+    public sealed partial class CollectionRuleTriggerOptions
     {
         [Required]
         public string Type { get; set; }

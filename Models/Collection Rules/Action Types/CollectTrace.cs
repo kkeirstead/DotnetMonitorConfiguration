@@ -10,8 +10,10 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
 {
     public class CollectTrace : CRAction
     {
-        public CollectTrace(TraceProfile? profile, List<EventPipeProvider> providers, bool? requestRundown, int? bufferSizeMegabytes, TimeSpan? duration, string egress)
+        public CollectTrace(string name, bool? waitForCompletion, TraceProfile? profile, List<EventPipeProvider> providers, bool? requestRundown, int? bufferSizeMegabytes, TimeSpan? duration, string egress)
         {
+            Name = name;
+            WaitForCompletion = waitForCompletion;
             Profile = profile;
             Providers = providers;
             RequestRundown = (null != requestRundown) ? requestRundown : RequestRundown;
@@ -19,6 +21,11 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
             Duration = (null != duration) ? duration : Duration;
             Egress = egress;
         }
+
+        public string Name { get; set; }
+
+        public bool? WaitForCompletion { get; set; }
+
         public TraceProfile? Profile { get; set; }
 
         public List<EventPipeProvider> Providers { get; set; }

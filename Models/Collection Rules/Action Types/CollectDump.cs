@@ -10,14 +10,17 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
 {
     public class CollectDump : CRAction
     {
-        public CollectDump(string egress, DumpType? type)
+        public CollectDump(string name, bool? waitForCompletion, string egress, DumpType? type)
         {
+            Name = name;
+            WaitForCompletion = waitForCompletion;
             Egress = egress;
             Type = (null != type) ? type : Type;
         }
 
+        public string Name { get; set; }
 
-        // Using the CollectDumpOptions. For a real version of this, it may be better to actually create some linkage between projects to reduce duplication.
+        public bool? WaitForCompletion { get; set; }
 
         [Required]
         public string Egress { get; set; }

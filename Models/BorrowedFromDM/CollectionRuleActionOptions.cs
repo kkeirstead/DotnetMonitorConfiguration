@@ -12,7 +12,7 @@ namespace DotnetMonitorConfiguration.Models.BorrowedFromDM
     /// Options for describing the type of action to execute and the settings to pass to that action.
     /// </summary>
     [DebuggerDisplay("Action: Type = {Type}")]
-    internal sealed partial class CollectionRuleActionOptions
+    public sealed partial class CollectionRuleActionOptions
     {
         public string Name { get; set; }
 

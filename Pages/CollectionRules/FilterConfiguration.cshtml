@@ -1,5 +1,6 @@
 ﻿@page
 @using DotnetMonitorConfiguration.Models
+@using System.ComponentModel.DataAnnotations
 @model FilterConfigurationModel
 
 <form method="post">
@@ -12,15 +13,22 @@
         {
             Type currType = General.GetType(@propertyInfo.PropertyType);
 
-            <div class="label">@propertyInfo.Name</div>
-            <div class="sub-label">@General.GetFormatDescription(currType)</div>
+            bool isRequired = Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute));
 
-            string val = FilterConfigurationModel.GetCurrValue(propertyInfo);
+                string nameValue = propertyInfo.Name + ((isRequired) ? "*" : "");
+                
+                <div class="label">@nameValue</div>                    
 
-            if (currType.IsEnum)
-            {
-                <select asp-for=properties[index.ToString()]>
-                    @foreach (var enumName in Enum.GetNames(currType))
+                <div class="sub-label">@General.GetFormatDescription(currType)</div>
+
+                string val = FilterConfigurationModel.GetCurrValue(propertyInfo);
+
+                if (currType.IsEnum || (currType == typeof(bool)))
+                {
+                    List<string> names = General.GetEnumNames(currType, isRequired);
+
+                    <select asp-for=properties[index.ToString()]>
+                    @foreach (var enumName in names)
                     {
                         if (val.Equals(enumName))
                         {
@@ -28,7 +36,7 @@
                         }
                         else
                         {
-                            <option value=@enumName>@enumName</option>                                
+                            <option value=@enumName>@enumName</option>
                         }
                     }
                 </select>

@@ -13,19 +13,38 @@
         {
             Type currType = General.GetType(@propertyInfo.PropertyType);
 
-            bool isDefined = Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute));
+            bool isRequired = Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute));
 
-            if (isDefined)
+            string nameValue = propertyInfo.Name + ((isRequired) ? "*" : "");
+
+            <div class="label">@nameValue</div>                    
+
+            <div class="sub-label">@General.GetFormatDescription(currType)</div>
+
+            string val = TriggerConfigurationModel.GetCurrValue(propertyInfo);
+
+            if (currType.IsEnum || (currType == typeof(bool)))
             {
-                <div class="label">@propertyInfo.Name *</div>                    
+                List<string> names = General.GetEnumNames(currType, isRequired);
+
+                <select asp-for=properties[index.ToString()]>
+                @foreach (var enumName in names)
+                {
+                    if (val.Equals(enumName))
+                    {
+                        <option value=@enumName selected>@enumName</option>
+                    }
+                    else
+                    {
+                        <option value=@enumName>@enumName</option>
+                    }
+                }
+                </select>
             }
             else
             {
-                <div class="label">@propertyInfo.Name</div>                    
+                <input asp-for=properties[index.ToString()] placeholder=@propertyInfo.Name value=@val/>
             }
-            <div class="sub-label">@General.GetFormatDescription(currType)</div>
-
-            <input asp-for=properties[index.ToString()] placeholder=@propertyInfo.Name value=@TriggerConfigurationModel.GetCurrValue(propertyInfo)/>
             <br />
             ++index;
         }
