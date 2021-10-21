@@ -1,4 +1,5 @@
-﻿using DotnetMonitorConfiguration.Models.Collection_Rules;
+﻿using DotnetMonitorConfiguration.Models;
+using DotnetMonitorConfiguration.Models.Collection_Rules;
 using DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -42,12 +43,21 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return RedirectToPage("./LimitConfiguration");
         }
 
-        public IActionResult OnPostWay4(string data)
+        public IActionResult OnPostFilterSelect(string data)
         {
             FilterConfigurationModel.collectionRuleIndex = collectionRuleIndex;
             FilterConfigurationModel.filterIndex = int.Parse(data);
 
             return RedirectToPage("./FilterConfiguration");
+        }
+
+        public IActionResult OnPostDelete(string data)
+        {
+            int indexToDelete = int.Parse(data);
+
+            General._collectionRules[collectionRuleIndex]._filters.RemoveAt(indexToDelete);
+
+            return null;
         }
     }
 }

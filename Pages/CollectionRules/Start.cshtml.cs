@@ -326,7 +326,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return RedirectToPage("./CollectionRuleCreation");
         }
 
-        public IActionResult OnPostWay4(string data)
+        public IActionResult OnPostDelete(string data)
         {
             int indexToDelete = int.Parse(data);
 

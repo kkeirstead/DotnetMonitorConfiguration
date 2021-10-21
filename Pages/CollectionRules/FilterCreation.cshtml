@@ -20,7 +20,14 @@
 
         @foreach(var crFilter in General._collectionRules[FilterCreationModel.collectionRuleIndex]._filters)
         {
-            <button class="submit-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Way4" id="submitButton">@crFilter.Key</button>
+            <div class="column-ultra-wide">
+                 <button class="button" type="submit" asp-route-data=@index.ToString() asp-page-handler="FilterSelect" id="submitButton">@crFilter.Key</button>
+            </div>
+
+            <div class="column-ultra-narrow">
+                 <button class="delete-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Delete" id="submitButton">X</button>
+            </div>
+
             ++index;
         }
     </div>

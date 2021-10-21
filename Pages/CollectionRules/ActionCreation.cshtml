@@ -20,7 +20,22 @@
 
         @foreach(var crAction in General._collectionRules[ActionCreationModel.collectionRuleIndex]._actions)
         {
-            <button class="submit-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Way4" id="submitButton">@crAction.GetType().Name</button>
+            <div class="column-wide">
+                 <button class="button" type="submit" asp-route-data=@index.ToString() asp-page-handler="ActionSelect" id="submitButton">@crAction.GetType().Name</button>
+            </div>
+
+            <div class="column-ultra-narrow">
+                 <button class="delete-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Delete" id="submitButton">X</button>
+            </div>
+
+            <div class="column-ultra-narrow">
+                <button class="misc-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Down" id="submitButton">▼</button>
+            </div>
+
+            <div class="column-ultra-narrow">
+                <button class="misc-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Up" id="submitButton">▲</button>
+            </div>
+
             ++index;
         }
     </div>

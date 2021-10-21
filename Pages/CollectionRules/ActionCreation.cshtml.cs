@@ -42,7 +42,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return RedirectToPage("./FilterCreation");
         }
 
-        public IActionResult OnPostWay4(string data)
+        public IActionResult OnPostActionSelect(string data)
         {
             int actionIndex = int.Parse(data);
 
@@ -51,6 +51,51 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             ActionConfigurationModel.actionType = General._collectionRules[collectionRuleIndex]._actions[actionIndex]._actionType;
 
             return RedirectToPage("./ActionConfiguration");
+        }
+
+        public IActionResult OnPostDelete(string data)
+        {
+            int indexToDelete = int.Parse(data);
+
+            General._collectionRules[collectionRuleIndex]._actions.RemoveAt(indexToDelete);
+
+            return null;
+        }
+
+        public IActionResult OnPostDown(string data)
+        {
+            int indexToDecrease = int.Parse(data);
+
+            if (indexToDecrease == General._collectionRules[collectionRuleIndex]._actions.Count - 1)
+            {
+                return null;
+            }
+
+            CRAction tempAction = General._collectionRules[collectionRuleIndex]._actions[indexToDecrease];
+
+            General._collectionRules[collectionRuleIndex]._actions[indexToDecrease] = General._collectionRules[collectionRuleIndex]._actions[indexToDecrease + 1];
+
+            General._collectionRules[collectionRuleIndex]._actions[indexToDecrease + 1] = tempAction;
+
+            return null;
+        }
+
+        public IActionResult OnPostUp(string data)
+        {
+            int indexToIncrease = int.Parse(data);
+
+            if (indexToIncrease == 0)
+            {
+                return null;
+            }
+
+            CRAction tempAction = General._collectionRules[collectionRuleIndex]._actions[indexToIncrease];
+
+            General._collectionRules[collectionRuleIndex]._actions[indexToIncrease] = General._collectionRules[collectionRuleIndex]._actions[indexToIncrease - 1];
+
+            General._collectionRules[collectionRuleIndex]._actions[indexToIncrease - 1] = tempAction;
+
+            return null;
         }
     }
 }
