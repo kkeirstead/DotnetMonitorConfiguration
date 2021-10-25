@@ -197,6 +197,14 @@ select {
     text-align: center;
 }
 
+.error-label {
+    font-size: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+    color: #BB0000;
+    text-align: center;
+}
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #1b6ec2;

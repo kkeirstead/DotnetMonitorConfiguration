@@ -21,7 +21,8 @@
         @foreach(var crAction in General._collectionRules[ActionCreationModel.collectionRuleIndex]._actions)
         {
             <div class="column-wide">
-                 <button class="button" type="submit" asp-route-data=@index.ToString() asp-page-handler="ActionSelect">@crAction.GetType().Name</button>
+                @{string val = (string.IsNullOrEmpty(crAction.Name)) ? crAction.GetType().Name : crAction.Name;}
+                <button class="button" type="submit" asp-route-data=@index.ToString() asp-page-handler="ActionSelect">@val</button>
             </div>
 
             <div class="column-ultra-narrow">

@@ -17,6 +17,8 @@ namespace DotnetMonitorConfiguration.Pages
         [BindProperty]
         public string JsonRules { get; set; }
 
+        public static bool failedState = false;
+
         public LoadJsonModel(ILogger<LoadJsonModel> logger)
         {
             _logger = logger;
@@ -33,7 +35,18 @@ namespace DotnetMonitorConfiguration.Pages
 
             if (!string.IsNullOrEmpty(JsonRules))
             {
-                General.ConvertJsonToCollectionRules(JsonRules);
+                try
+                {
+                    General.ConvertJsonToCollectionRules(JsonRules);
+                }
+                catch (Exception ex)
+                {
+                    failedState = true;
+
+                    Console.WriteLine(ex.Message);
+
+                    return null;
+                }
 
                 return RedirectToPage("./CollectionRules/Start");
             }

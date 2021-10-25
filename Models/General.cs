@@ -101,7 +101,15 @@ namespace DotnetMonitorConfiguration.Models
                     return null;
                 }
 
-                constructorArgs[index] = GetConstructorArgument(typeProperties[index], userAssignedProperties[key]);
+                try
+                {
+                    constructorArgs[index] = GetConstructorArgument(typeProperties[index], userAssignedProperties[key]);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return null;
+                }
             }
 
             return constructorArgs;
@@ -168,7 +176,7 @@ namespace DotnetMonitorConfiguration.Models
             }
             else if (propsType == typeof(string[]))
             {
-                return (string[])propertyValue;
+                return ((Newtonsoft.Json.Linq.JArray)propertyValue).ToObject<string[]>();
             }
             else if (propsType == typeof(double))
             {
@@ -237,6 +245,8 @@ namespace DotnetMonitorConfiguration.Models
                     triggerSettings[propertyInfo.Name] = propertyInfo.GetValue(rule._trigger); // Make sure this piece works
                 }
             }
+
+            triggerOptions.Settings = triggerSettings;
 
             // CollectionRuleOptions
 
@@ -366,6 +376,5 @@ namespace DotnetMonitorConfiguration.Models
 
             return names;
         }
-
     }
 }

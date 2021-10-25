@@ -7,10 +7,14 @@
 
 <form method="post">
     <div class="row-narrow">
-      <fieldset>
-
-        <input asp-for=JsonRules placeholder="Your Json Here..."/>
-      </fieldset>
+      
+        @if (LoadJsonModel.failedState)
+        {
+            <div class="error-label">Invalid JSON. Please try again or start a new configuration.</div>
+        }
+        <fieldset>
+            <input asp-for=JsonRules placeholder="Your Json Here..."/>
+        </fieldset>
     </div>
     <button class="submit-button" type="submit" asp-page-handler="ConvertJSON" id="submitButton">Submit</button>
 </form>

@@ -23,14 +23,10 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static string GenerateJSON()
         {
-            RemoveBadCollectionRules();
-
-            List<CollectionRuleOptions> collectionRuleOptions = new List<CollectionRuleOptions>();
             Dictionary<string, CollectionRuleOptions> collectionRuleOptionsDict = new();
 
             foreach (var rule in General._collectionRules)
             {
-                collectionRuleOptions.Add(General.SerializeCollectionRule(rule));
                 collectionRuleOptionsDict[rule.Name] = General.SerializeCollectionRule(rule);
             }
 
@@ -38,16 +34,21 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             settings.NullValueHandling = NullValueHandling.Ignore;
             settings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
 
-            return JsonConvert.SerializeObject(collectionRuleOptionsDict, Formatting.Indented, settings);
+            return "CollectionRules: " + JsonConvert.SerializeObject(collectionRuleOptionsDict, Formatting.Indented, settings);
         }
 
-        private static void RemoveBadCollectionRules()
+        public static void FilterBadCRs()
         {
             for (int index = General._collectionRules.Count - 1; index >= 0; --index)
             {
-                if (null == General._collectionRules[index]._trigger || null == General._collectionRules[index]._limit)
+                if (null == General._collectionRules[index]._trigger)
                 {
                     General._collectionRules.RemoveAt(index);
+                }
+
+                if (null == General._collectionRules[index]._limit)
+                {
+                    General._collectionRules[index]._limit = new Models.Collection_Rules.CRLimit(null, null, null);
                 }
             }
         }

@@ -23,6 +23,8 @@ namespace DotnetMonitorConfiguration.Pages
 
         public IActionResult OnPostLoadJSON(string data)
         {
+            LoadJsonModel.failedState = false;
+
             return RedirectToPage("./LoadJSON");
         }
 
