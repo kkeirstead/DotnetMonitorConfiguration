@@ -34,7 +34,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public IActionResult OnPostProfile(string data)
         {
-            // This may need the same treatment as the method below
+            CreateDummyAction();
 
             TraceConfigurationProfileModel.collectionRuleIndex = collectionRuleIndex;
 
@@ -44,6 +44,17 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         }
 
         public IActionResult OnPostProviders(string data)
+        {
+            CreateDummyAction();
+
+            TraceConfigurationProvidersModel.collectionRuleIndex = collectionRuleIndex;
+
+            TraceConfigurationProvidersModel.actionIndex = actionIndex;
+
+            return RedirectToPage("./TraceConfigurationProviders");
+        }
+
+        private void CreateDummyAction()
         {
             var typeProperties = typeof(CollectTrace).GetProperties();
 
@@ -61,12 +72,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 General._collectionRules[collectionRuleIndex]._actions.Add(action);
                 actionIndex = General._collectionRules[collectionRuleIndex]._actions.Count - 1;
             }
-
-            TraceConfigurationProvidersModel.collectionRuleIndex = collectionRuleIndex;
-
-            TraceConfigurationProvidersModel.actionIndex = actionIndex;
-
-            return RedirectToPage("./TraceConfigurationProviders");
         }
     }
 }

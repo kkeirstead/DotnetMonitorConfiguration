@@ -36,7 +36,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
         }
 
-        public IActionResult OnPostWay2(string data)
+        public IActionResult OnPostTriggerType(string data)
         {
             Type t = Type.GetType("DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types." + data);
 

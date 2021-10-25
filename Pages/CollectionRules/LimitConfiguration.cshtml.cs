@@ -50,7 +50,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return General.GetStringRepresentation(currLimit, propertyInfo);
         }
 
-        public IActionResult OnPostWay2(string data)
+        public IActionResult OnPostSubmit(string data)
         {
             var typeProperties = GetConfigurationSettings();
 

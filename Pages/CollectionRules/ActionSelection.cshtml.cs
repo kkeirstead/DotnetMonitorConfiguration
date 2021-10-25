@@ -30,7 +30,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
         }
 
-        public IActionResult OnPostWay2(string data)
+        public IActionResult OnPostSubmit(string data)
         {
             Type t = Type.GetType("DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types." + data);
 

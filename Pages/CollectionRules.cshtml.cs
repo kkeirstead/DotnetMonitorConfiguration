@@ -23,12 +23,12 @@ namespace DotnetMonitorConfiguration.Pages
         {
         }
 
-        public IActionResult OnPostWay2(string data)
+        public IActionResult OnPostLoadJSON(string data)
         {
             return RedirectToPage("./LoadJSON");
         }
 
-        public IActionResult OnPostWay3(string data)
+        public IActionResult OnPostStart(string data)
         {
             return RedirectToPage("./CollectionRules/Start");
         }

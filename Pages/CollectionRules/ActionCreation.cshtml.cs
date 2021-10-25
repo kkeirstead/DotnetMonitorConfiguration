@@ -28,14 +28,14 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
         }
 
-        public IActionResult OnPostWay2(string data)
+        public IActionResult OnPostNewAction(string data)
         {
             ActionSelectionModel.collectionRuleIndex = collectionRuleIndex;
 
             return RedirectToPage("./ActionSelection");
         }
 
-        public IActionResult OnPostWay3(string data)
+        public IActionResult OnPostDone(string data)
         {
             FilterCreationModel.collectionRuleIndex = collectionRuleIndex;
 

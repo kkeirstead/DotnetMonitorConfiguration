@@ -30,14 +30,8 @@
                     <select asp-for=properties[index.ToString()]>
                     @foreach (var enumName in names)
                     {
-                        if (val.Equals(enumName))
-                        {
-                            <option value=@enumName selected>@enumName</option>
-                        }
-                        else
-                        {
-                            <option value=@enumName>@enumName</option>
-                        }
+                        bool isSelected = val.Equals(enumName, StringComparison.CurrentCultureIgnoreCase);
+                        <option value=@enumName selected=@isSelected>@enumName</option>
                     }
                 </select>
             }
@@ -49,7 +43,7 @@
             ++index;
         }
         
-        <button class="button" type="submit" asp-route-data="Submit" asp-page-handler="Way2" id="submitButton">Submit</button>
+        <button class="button" type="submit" asp-page-handler="Submit">Submit</button>
 
       </fieldset>
     </div>

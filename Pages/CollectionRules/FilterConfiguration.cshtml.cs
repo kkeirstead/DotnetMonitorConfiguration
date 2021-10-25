@@ -1,16 +1,10 @@
 ﻿using DotnetMonitorConfiguration.Models;
 using DotnetMonitorConfiguration.Models.Collection_Rules;
-using DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types;
-using DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace DotnetMonitorConfiguration.Pages.CollectionRules
 {
@@ -52,7 +46,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             return General.GetStringRepresentation(currFilter, propertyInfo);
         }
-        public IActionResult OnPostWay2(string data)
+        public IActionResult OnPostSubmit(string data)
         {
             var typeProperties = GetConfigurationSettings();
 

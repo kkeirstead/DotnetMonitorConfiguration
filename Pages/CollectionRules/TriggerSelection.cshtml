@@ -13,11 +13,11 @@
             {
                 if (triggerType.Equals(TriggerSelectionModel.GetExistingTriggerTypeName()))
                 {
-                    <button class="submit-button-highlighted" type="submit" asp-route-data=@triggerType asp-page-handler="Way2" id="submitButton">@triggerType</button>
+                    <button class="submit-button-highlighted" type="submit" asp-route-data=@triggerType asp-page-handler="TriggerType">@triggerType</button>
                 }
                 else
                 {
-                    <button class="submit-button" type="submit" asp-route-data=@triggerType asp-page-handler="Way2" id="submitButton">@triggerType</button>
+                    <button class="submit-button" type="submit" asp-route-data=@triggerType asp-page-handler="TriggerType">@triggerType</button>
                 }
             }
         </fieldset>

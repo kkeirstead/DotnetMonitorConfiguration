@@ -67,7 +67,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return profileProps.ToArray();
         }
 
-        public IActionResult OnPostWay2(string data)
+        public IActionResult OnPostSubmit(string data)
         {
             var typeProperties = GetConfigurationSettings();
 
@@ -75,27 +75,18 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             if (null != constructorArgs)
             {
-                var ctors = actionType.GetConstructors();
+                var ctors = typeof(CollectTrace).GetConstructors().ToList();
 
-                CRAction action = (CRAction)ctors[0].Invoke(constructorArgs);
+                ctors.RemoveAll(ctor => ctor.GetParameters().Length != constructorArgs.Length);
 
-                action._actionType = actionType;
+                CollectTrace action = (CollectTrace)ctors[0].Invoke(constructorArgs);
+                action.IsProviders = false; // Only used internally to simplify checks
 
-                if (actionIndex == -1)
-                {
-                    General._collectionRules[collectionRuleIndex]._actions.Add(action);
-                }
-                else
-                {
-                    General._collectionRules[collectionRuleIndex]._actions[actionIndex] = action;
-                }
-
-                ActionCreationModel.collectionRuleIndex = collectionRuleIndex;
-
-                return RedirectToPage("./ActionCreation");
+                General._collectionRules[collectionRuleIndex]._actions[actionIndex] = action;
+                General._collectionRules[collectionRuleIndex]._actions[actionIndex]._actionType = typeof(CollectTrace);
             }
 
-            return null;
+            return RedirectToPage("./ActionCreation");
         }
     }
 }

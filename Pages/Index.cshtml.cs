@@ -27,7 +27,7 @@ namespace DotnetMonitorConfiguration.Pages
         {
         }
 
-        public IActionResult OnPostWay2(string data)
+        public IActionResult OnPostCollectionRules(string data)
         {
             return RedirectToPage("./CollectionRules");
         }

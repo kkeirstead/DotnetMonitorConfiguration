@@ -1,16 +1,8 @@
 ﻿using DotnetMonitorConfiguration.Models;
-using DotnetMonitorConfiguration.Models.BorrowedFromDM;
-using DotnetMonitorConfiguration.Models.Collection_Rules;
-using DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types;
-using DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DotnetMonitorConfiguration.Pages
 {
@@ -31,7 +23,7 @@ namespace DotnetMonitorConfiguration.Pages
 
         }
 
-        public IActionResult OnPostWay2(string data)
+        public IActionResult OnPostConvertJSON(string data)
         {
             Console.WriteLine("JsonRules: " + JsonRules);
 

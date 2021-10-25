@@ -31,14 +31,8 @@
                 <select asp-for=properties[propertyInfo.Name]>
                     @foreach (var enumName in names)
                     {
-                        if (val.Equals(enumName, StringComparison.CurrentCultureIgnoreCase))
-                        {
-                            <option value=@enumName selected>@enumName</option>
-                        }
-                        else
-                        {
-                            <option value=@enumName>@enumName</option>
-                        }
+                        bool isSelected = val.Equals(enumName, StringComparison.CurrentCultureIgnoreCase);
+                        <option value=@enumName selected=@isSelected>@enumName</option>
                     }
                 </select>
             }

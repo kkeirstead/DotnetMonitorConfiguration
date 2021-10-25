@@ -53,7 +53,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         }
 
-        public IActionResult OnPostWay2(string data)
+        public IActionResult OnPostSubmit(string data)
         {
             if (!(string.IsNullOrEmpty(Key) || string.IsNullOrEmpty(Value)))
             {
