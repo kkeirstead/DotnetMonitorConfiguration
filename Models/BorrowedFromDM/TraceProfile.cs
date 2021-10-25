@@ -11,5 +11,4 @@ namespace DotnetMonitorConfiguration.Models.BorrowedFromDM
         Logs = 0x4,
         Metrics = 0x8
     }
-
 }

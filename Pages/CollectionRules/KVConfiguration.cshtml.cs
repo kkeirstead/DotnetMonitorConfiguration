@@ -1,17 +1,13 @@
-﻿using DotnetMonitorConfiguration.Models;
-using DotnetMonitorConfiguration.Models.BorrowedFromDM;
-using DotnetMonitorConfiguration.Models.Collection_Rules;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using DotnetMonitorConfiguration.Models;
 using DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types;
-using DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 
 namespace DotnetMonitorConfiguration.Pages.CollectionRules
 {
