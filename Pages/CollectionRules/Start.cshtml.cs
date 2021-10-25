@@ -198,17 +198,23 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             RemoveBadCollectionRules();
 
             List<CollectionRuleOptions> collectionRuleOptions = new List<CollectionRuleOptions>();
+            Dictionary<string, CollectionRuleOptions> collectionRuleOptionsDict = new();
 
             foreach (var rule in General._collectionRules)
             {
                 collectionRuleOptions.Add(General.SerializeCollectionRule(rule));
+                collectionRuleOptionsDict[rule.Name] = General.SerializeCollectionRule(rule);
             }
+
 
             // Need to do more work here to massage the output into what we want.
 
-            return JsonConvert.SerializeObject(collectionRuleOptions, Formatting.Indented);
-        }
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.NullValueHandling = NullValueHandling.Ignore;
+            settings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
 
+            return JsonConvert.SerializeObject(collectionRuleOptionsDict, Formatting.Indented, settings);
+        }
 
         private static void RemoveBadCollectionRules()
         {
@@ -256,6 +262,18 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             else if (t.IsEnum)
             {
                 toReturn += FormatKVPair(setting.Name, Enum.GetName(t, settingValue));
+            }
+            else if (t == typeof(List<EventPipeProvider>))
+            {
+                List<EventPipeProvider> epps = (List<EventPipeProvider>)settingValue;
+
+                foreach (var epp in epps)
+                {
+                    foreach (var prop in typeof(EventPipeProvider).GetProperties())
+                    {
+                        FormatKVPair(prop, prop.GetValue(epp));
+                    }
+                }
             }
 
             return toReturn;

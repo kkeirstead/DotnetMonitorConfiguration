@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Tracing;
 using System.Text.Json.Serialization;
@@ -11,12 +12,13 @@ namespace DotnetMonitorConfiguration.Models.BorrowedFromDM
 {
     public class EventPipeProvider
     {
+        [Required]
         public string Name { get; set; }
 
-        public string Keywords { get; set; } = "0x" + EventKeywords.All.ToString("X");
+        public string Keywords { get; set; }
 
-        public EventLevel EventLevel { get; set; } = EventLevel.Verbose;
+        public EventLevel? EventLevel { get; set; }
 
-        public IDictionary<string, string> Arguments { get; set; }
+        public Dictionary<string, string> Arguments { get; set; }
     }
 }

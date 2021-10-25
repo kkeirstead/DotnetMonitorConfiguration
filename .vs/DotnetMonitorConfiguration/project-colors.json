@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b9a76160-330d-4ac7-85a8-5aaf55b7dae9": {
+      "ProjectGuid": "b9a76160-330d-4ac7-85a8-5aaf55b7dae9",
+      "DisplayName": "DotnetMonitorConfiguration",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}

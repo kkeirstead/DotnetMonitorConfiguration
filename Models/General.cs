@@ -84,6 +84,12 @@ namespace DotnetMonitorConfiguration.Models
             {
                 int index = int.Parse(key);
 
+                if (typeProperties[index].PropertyType == typeof(List<EventPipeProvider>))
+                {
+                    // Special case since we handle EventPipeProviders on a separate screen
+                    continue;
+                }
+
                 bool isDefined = Attribute.IsDefined(typeProperties[index], typeof(RequiredAttribute));
 
                 if (isDefined && string.IsNullOrEmpty(userAssignedProperties[key]))

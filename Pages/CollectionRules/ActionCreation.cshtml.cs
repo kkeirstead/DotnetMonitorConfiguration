@@ -46,11 +46,35 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
             int actionIndex = int.Parse(data);
 
-            ActionConfigurationModel.collectionRuleIndex = collectionRuleIndex;
-            ActionConfigurationModel.actionIndex = actionIndex;
-            ActionConfigurationModel.actionType = General._collectionRules[collectionRuleIndex]._actions[actionIndex]._actionType;
+            CRAction currAction = General._collectionRules[collectionRuleIndex]._actions[actionIndex];
+            
+            Type actionType = currAction._actionType;
 
-            return RedirectToPage("./ActionConfiguration");
+            if (actionType == typeof(CollectTrace))
+            {
+                if (((CollectTrace)currAction).IsProviders)
+                {
+                    TraceConfigurationProvidersModel.collectionRuleIndex = collectionRuleIndex;
+                    TraceConfigurationProvidersModel.actionIndex = actionIndex;
+
+                    return RedirectToPage("./TraceConfigurationProviders");
+                }
+                else
+                {
+                    TraceConfigurationProfileModel.collectionRuleIndex = collectionRuleIndex;
+                    TraceConfigurationProfileModel.actionIndex = actionIndex;
+
+                    return RedirectToPage("./TraceConfigurationProfile");
+                }
+            }
+            else
+            {
+                ActionConfigurationModel.collectionRuleIndex = collectionRuleIndex;
+                ActionConfigurationModel.actionIndex = actionIndex;
+                ActionConfigurationModel.actionType = actionType;
+
+                return RedirectToPage("./ActionConfiguration");
+            }
         }
 
         public IActionResult OnPostDelete(string data)

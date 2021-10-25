@@ -1,0 +1,26 @@
+﻿@page
+@using DotnetMonitorConfiguration.Models
+@using System.ComponentModel.DataAnnotations
+@using DotnetMonitorConfiguration.Models.BorrowedFromDM
+@model KVConfigurationModel
+
+<form method="post">
+  <div class="row-narrow">
+    <fieldset>
+
+        <div class="label">Key</div>
+
+        @{
+            string val = KVConfigurationModel.GetValue();
+        }
+        <input asp-for=Key placeholder="Key" value=@KVConfigurationModel._key/>
+
+        <div class="label">Value</div>                    
+
+        <input asp-for=Value placeholder="Value" value=@val/>
+
+    </fieldset>
+  </div>
+
+    <button class="submit-button" type="submit" asp-route-data="Submit" asp-page-handler="Way2" id="submitButton">Submit</button>
+</form>

@@ -1,0 +1,80 @@
+﻿@page
+@using DotnetMonitorConfiguration.Models
+@using System.ComponentModel.DataAnnotations
+@using DotnetMonitorConfiguration.Models.BorrowedFromDM
+@model TraceConfigurationProvidersModel
+
+<form method="post">
+    <div class="row-narrow">
+      <fieldset>
+        @{
+            int index = 0;
+        }
+        @foreach(var propertyInfo in TraceConfigurationProvidersModel.GetConfigurationSettings(includeEPP: true))
+        {
+            Type currType = General.GetType(@propertyInfo.PropertyType);
+
+            bool isRequired = Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute));
+
+            string nameValue = propertyInfo.Name + ((isRequired) ? "*" : "");
+             
+            <div class="label">@nameValue</div>
+
+            <div class="sub-label">@General.GetFormatDescription(currType)</div>
+
+            string val = TraceConfigurationProvidersModel.GetCurrValue(propertyInfo);
+
+            if (currType.IsEnum || (currType == typeof(bool)))
+            {
+                List<string> names = General.GetEnumNames(currType, isRequired);
+
+                <select asp-for=properties[index.ToString()]>
+                    @foreach (var enumName in names)
+                    {
+                        if (val.Equals(enumName, StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            <option value=@enumName selected>@enumName</option>
+                        }
+                        else
+                        {
+                            <option value=@enumName>@enumName</option>
+                        }
+                    }
+                </select>
+            }
+            else if (currType == typeof(List<EventPipeProvider>))
+            {
+                List<EventPipeProvider> eventPipeProviders = TraceConfigurationProvidersModel.GetEventPipeProviders(propertyInfo);
+
+                <button class="submit-button" type="submit" asp-route-data="Submit" asp-page-handler="AddEPP" id="submitButton">New EventPipeProvider</button>
+
+                int eppIndex = 0;
+                foreach (var eventPipeProvider in eventPipeProviders)
+                {
+                    <div class="row-narrow">
+                        <div class="column-ultra-wide">
+                            <button class="button" type="submit" asp-route-data=@eppIndex.ToString() asp-page-handler="AccessEPP" id="submitButton">@eventPipeProvider.Name</button>
+                        </div>
+
+                        <div class="column-ultra-narrow">
+                            <button class="delete-button" type="submit" asp-route-data=@eppIndex.ToString() asp-page-handler="DeleteEPP" id="submitButton">X</button>
+                        </div>
+                    </div>
+
+                    ++eppIndex;
+                }
+
+                --index; // We don't want to increment for a non-field
+            }
+            else
+            {
+                <input asp-for=properties[index.ToString()] placeholder=@propertyInfo.Name value=@val/>
+            }
+            <br />
+            ++index;
+        }
+        
+      </fieldset>
+    </div>
+    <button class="submit-button" type="submit" asp-route-data="Submit" asp-page-handler="Way2" id="submitButton">Submit</button>
+</form>

@@ -1,5 +1,6 @@
 ﻿using DotnetMonitorConfiguration.Models.Collection_Rules;
 using DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types;
+using DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -33,11 +34,24 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
             Type t = Type.GetType("DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types." + data);
 
-            ActionConfigurationModel.actionType = t;
+            if (typeof(CollectTrace) == t)
+            {
+                TraceConfiguration1Model.actionType = t;
 
-            ActionConfigurationModel.collectionRuleIndex = collectionRuleIndex;
+                TraceConfiguration1Model.actionIndex = -1;
 
-            return RedirectToPage("./ActionConfiguration");
+                TraceConfiguration1Model.collectionRuleIndex = collectionRuleIndex;
+
+                return RedirectToPage("./TraceConfiguration1");
+            }
+            else 
+            {
+                ActionConfigurationModel.actionType = t;
+
+                ActionConfigurationModel.collectionRuleIndex = collectionRuleIndex;
+
+                return RedirectToPage("./ActionConfiguration");
+            }
         }
     }
 }
