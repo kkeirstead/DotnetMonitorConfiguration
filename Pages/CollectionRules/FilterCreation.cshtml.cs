@@ -28,7 +28,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
         }
 
-        public IActionResult OnPostWay2(string data)
+        public IActionResult OnPostNewFilter()
         {
             FilterConfigurationModel.collectionRuleIndex = collectionRuleIndex;
             FilterConfigurationModel.filterIndex = -1;
@@ -36,7 +36,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return RedirectToPage("./FilterConfiguration");
         }
 
-        public IActionResult OnPostWay3(string data)
+        public IActionResult OnPostDone()
         {
             LimitConfigurationModel.collectionRuleIndex = collectionRuleIndex;
 

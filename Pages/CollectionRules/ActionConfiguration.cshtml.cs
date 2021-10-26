@@ -31,10 +31,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             _logger = logger;
         }
 
-        public void OnGet()
-        {
-        }
-
         public static PropertyInfo[] GetConfigurationSettings()
         {
             var props = actionType.GetProperties();
@@ -44,17 +40,10 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static string GetCurrValue(PropertyInfo propertyInfo)
         {
-            if (actionIndex == -1)
-            {
-                return "";
-            }
-
-            CRAction currAction = General._collectionRules[collectionRuleIndex]._actions[actionIndex];
-
-            return General.GetStringRepresentation(currAction, propertyInfo);
+            return General.GetCurrValueAction(propertyInfo, actionIndex, collectionRuleIndex);
         }
 
-        public IActionResult OnPostSubmit(string data)
+        public IActionResult OnPostSubmit()
         {
             var typeProperties = GetConfigurationSettings();
 

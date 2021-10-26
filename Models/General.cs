@@ -164,7 +164,7 @@ namespace DotnetMonitorConfiguration.Models
 
             if (propsType == typeof(Int32))
             {
-                return (int)propertyValue;
+                return Convert.ToInt32(propertyValue);
             }
             else if (propsType == typeof(string))
             {
@@ -375,6 +375,25 @@ namespace DotnetMonitorConfiguration.Models
             }
 
             return names;
+        }
+
+        public static string GetCurrValueAction(PropertyInfo propertyInfo, int actionIndex, int collectionRuleIndex)
+        {
+            if (actionIndex == -1)
+            {
+                return "";
+            }
+
+            CRAction currAction = _collectionRules[collectionRuleIndex]._actions[actionIndex];
+
+            return GetStringRepresentation(currAction, propertyInfo);
+        }
+
+        public static string GenerateNameValue(PropertyInfo propertyInfo)
+        {
+            bool isRequired = Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute));
+
+            return propertyInfo.Name + (isRequired ? "*" : "");
         }
     }
 }

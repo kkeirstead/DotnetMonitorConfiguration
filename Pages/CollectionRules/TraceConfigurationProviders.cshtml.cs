@@ -31,17 +31,9 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             _logger = logger;
         }
 
-        // Moving this to be shared for ActionConfig and the TraceConfigs would be useful (would need to parameterize the actionIndex).
         public static string GetCurrValue(PropertyInfo propertyInfo)
         {
-            if (actionIndex == -1)
-            {
-                return "";
-            }
-
-            CRAction currAction = General._collectionRules[collectionRuleIndex]._actions[actionIndex];
-
-            return General.GetStringRepresentation(currAction, propertyInfo);
+            return General.GetCurrValueAction(propertyInfo, actionIndex, collectionRuleIndex);
         }
 
         public static PropertyInfo[] GetConfigurationSettings(bool includeEPP)
@@ -78,11 +70,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return epProviders;
         }
 
-        public void OnGet()
-        {
-        }
-
-        public IActionResult OnPostAddEPP(string data)
+        public IActionResult OnPostAddEPP()
         {
             SaveCurrAction();
 
@@ -115,7 +103,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return null;
         }
 
-        private void SaveCurrAction()
+        private bool SaveCurrAction()
         {
             var typeProperties = GetConfigurationSettings(includeEPP: false);
 
@@ -134,12 +122,19 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
                 General._collectionRules[collectionRuleIndex]._actions[actionIndex] = action;
                 General._collectionRules[collectionRuleIndex]._actions[actionIndex]._actionType = typeof(CollectTrace);
+
+                return true;
             }
+
+            return false;
         }
 
-        public IActionResult OnPostWay2(string data)
+        public IActionResult OnPostSubmit()
         {
-            SaveCurrAction();
+            if (!SaveCurrAction())
+            {
+                return null;
+            }
 
             return RedirectToPage("./ActionCreation");
         }

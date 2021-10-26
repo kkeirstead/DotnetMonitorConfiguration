@@ -26,11 +26,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             _logger = logger;
         }
 
-        public void OnGet()
-        {
-        }
-
-        public IActionResult OnPostProfile(string data)
+        public IActionResult OnPostProfile()
         {
             CreateDummyAction();
 
@@ -41,7 +37,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return RedirectToPage("./TraceConfigurationProfile");
         }
 
-        public IActionResult OnPostProviders(string data)
+        public IActionResult OnPostProviders()
         {
             CreateDummyAction();
 

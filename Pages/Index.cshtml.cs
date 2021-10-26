@@ -17,10 +17,6 @@ namespace DotnetMonitorConfiguration.Pages
             _logger = logger;
         }
 
-        public void OnGet()
-        {
-        }
-
         public IActionResult OnPostCollectionRules(string data)
         {
             return RedirectToPage("./CollectionRules");

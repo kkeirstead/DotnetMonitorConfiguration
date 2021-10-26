@@ -11,14 +11,8 @@
         <fieldset>
             @foreach(var triggerType in General._triggerTypes)
             {
-                if (triggerType.Equals(TriggerSelectionModel.GetExistingTriggerTypeName()))
-                {
-                    <button class="submit-button-highlighted" type="submit" asp-route-data=@triggerType asp-page-handler="TriggerType">@triggerType</button>
-                }
-                else
-                {
-                    <button class="submit-button" type="submit" asp-route-data=@triggerType asp-page-handler="TriggerType">@triggerType</button>
-                }
+                string className = (triggerType.Equals(TriggerSelectionModel.GetExistingTriggerTypeName())) ? "submit-button-highlighted" : "submit-button";
+                <button class=@className type="submit" asp-route-data=@triggerType asp-page-handler="TriggerType">@triggerType</button>
             }
         </fieldset>
     </div>

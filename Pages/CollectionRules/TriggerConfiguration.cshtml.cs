@@ -29,10 +29,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             _logger = logger;
         }
 
-        public void OnGet()
-        {
-        }
-
         public static string GetCurrValue(PropertyInfo propertyInfo)
         {
             CRTrigger currTrigger = General._collectionRules[collectionRuleIndex]._trigger;
@@ -52,7 +48,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return props;
         }
 
-        public IActionResult OnPostSubmit(string data)
+        public IActionResult OnPostSubmit()
         {
             var typeProperties = GetConfigurationSettings();
 

@@ -13,9 +13,7 @@
         {
             Type currType = General.GetType(@propertyInfo.PropertyType);
 
-            bool isRequired = Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute));
-
-            string nameValue = propertyInfo.Name + ((isRequired) ? "*" : "");
+            string nameValue = General.GenerateNameValue(propertyInfo);
 
             <div class="label">@nameValue</div>
 
@@ -25,7 +23,7 @@
 
             if (currType.IsEnum || (currType == typeof(bool)))
             {
-                List<string> names = General.GetEnumNames(currType, isRequired);
+                List<string> names = General.GetEnumNames(currType, Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute)));
 
                 <select asp-for=properties[index.ToString()]>
                 @foreach (var enumName in names)

@@ -25,18 +25,14 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             _logger = logger;
         }
 
-        public void OnGet()
-        {
-        }
-
-        public IActionResult OnPostNewAction(string data)
+        public IActionResult OnPostNewAction()
         {
             ActionSelectionModel.collectionRuleIndex = collectionRuleIndex;
 
             return RedirectToPage("./ActionSelection");
         }
 
-        public IActionResult OnPostDone(string data)
+        public IActionResult OnPostDone()
         {
             FilterCreationModel.collectionRuleIndex = collectionRuleIndex;
 

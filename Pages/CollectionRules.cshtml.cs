@@ -17,18 +17,14 @@ namespace DotnetMonitorConfiguration.Pages
             _logger = logger;
         }
 
-        public void OnGet()
-        {
-        }
-
-        public IActionResult OnPostLoadJSON(string data)
+        public IActionResult OnPostLoadJSON()
         {
             LoadJsonModel.failedState = false;
 
             return RedirectToPage("./LoadJSON");
         }
 
-        public IActionResult OnPostStart(string data)
+        public IActionResult OnPostStart()
         {
             return RedirectToPage("./CollectionRules/Start");
         }

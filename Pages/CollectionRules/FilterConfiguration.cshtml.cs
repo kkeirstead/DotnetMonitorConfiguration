@@ -28,10 +28,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             _logger = logger;
         }
 
-        public void OnGet()
-        {
-        }
-
         public static PropertyInfo[] GetConfigurationSettings()
         {
             var props = typeof(CRFilter).GetProperties();
@@ -50,7 +46,8 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             return General.GetStringRepresentation(currFilter, propertyInfo);
         }
-        public IActionResult OnPostSubmit(string data)
+
+        public IActionResult OnPostSubmit()
         {
             var typeProperties = GetConfigurationSettings();
 

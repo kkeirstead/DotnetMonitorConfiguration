@@ -14,10 +14,8 @@
         {
             Type currType = General.GetType(@propertyInfo.PropertyType);
 
-            bool isRequired = Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute));
+            string nameValue = General.GenerateNameValue(propertyInfo);
 
-            string nameValue = propertyInfo.Name + ((isRequired) ? "*" : "");
-             
             <div class="label">@nameValue</div>
 
             <div class="sub-label">@General.GetFormatDescription(currType)</div>
@@ -26,38 +24,32 @@
 
             if (currType.IsEnum || (currType == typeof(bool)))
             {
-                List<string> names = General.GetEnumNames(currType, isRequired);
+                List<string> names = General.GetEnumNames(currType, Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute)));
 
                 <select asp-for=properties[index.ToString()]>
-                    @foreach (var enumName in names)
-                    {
-                        if (val.Equals(enumName, StringComparison.CurrentCultureIgnoreCase))
-                        {
-                            <option value=@enumName selected>@enumName</option>
-                        }
-                        else
-                        {
-                            <option value=@enumName>@enumName</option>
-                        }
-                    }
+                @foreach (var enumName in names)
+                {
+                    bool isSelected = val.Equals(enumName, StringComparison.CurrentCultureIgnoreCase);
+                    <option value=@enumName selected=@isSelected>@enumName</option>
+                }
                 </select>
             }
             else if (currType == typeof(List<EventPipeProvider>))
             {
                 List<EventPipeProvider> eventPipeProviders = TraceConfigurationProvidersModel.GetEventPipeProviders(propertyInfo);
 
-                <button class="submit-button" type="submit" asp-route-data="Submit" asp-page-handler="AddEPP" id="submitButton">New EventPipeProvider</button>
+                <button class="submit-button" type="submit" asp-page-handler="AddEPP">New EventPipeProvider</button>
 
                 int eppIndex = 0;
                 foreach (var eventPipeProvider in eventPipeProviders)
                 {
                     <div class="row-narrow">
                         <div class="column-ultra-wide">
-                            <button class="button" type="submit" asp-route-data=@eppIndex.ToString() asp-page-handler="AccessEPP" id="submitButton">@eventPipeProvider.Name</button>
+                            <button class="button" type="submit" asp-route-data=@eppIndex.ToString() asp-page-handler="AccessEPP">@eventPipeProvider.Name</button>
                         </div>
 
                         <div class="column-ultra-narrow">
-                            <button class="delete-button" type="submit" asp-route-data=@eppIndex.ToString() asp-page-handler="DeleteEPP" id="submitButton">X</button>
+                            <button class="delete-button" type="submit" asp-route-data=@eppIndex.ToString() asp-page-handler="DeleteEPP">X</button>
                         </div>
                     </div>
 
@@ -76,5 +68,5 @@
         
       </fieldset>
     </div>
-    <button class="submit-button" type="submit" asp-route-data="Submit" asp-page-handler="Way2" id="submitButton">Submit</button>
+    <button class="submit-button" type="submit" asp-page-handler="Submit">Submit</button>
 </form>

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types;
 using DotnetMonitorConfiguration.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace DotnetMonitorConfiguration.Pages.CollectionRules
 {
@@ -36,17 +37,9 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
         }
 
-        // Moving this to be shared for ActionConfig and the TraceConfigs would be useful (would need to parameterize the actionIndex).
         public static string GetCurrValue(PropertyInfo propertyInfo)
         {
-            if (actionIndex == -1)
-            {
-                return "";
-            }
-
-            CRAction currAction = General._collectionRules[collectionRuleIndex]._actions[actionIndex];
-
-            return General.GetStringRepresentation(currAction, propertyInfo);
+            return General.GetCurrValueAction(propertyInfo, actionIndex, collectionRuleIndex);
         }
 
         public static PropertyInfo[] GetConfigurationSettings()
@@ -85,9 +78,11 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
                 General._collectionRules[collectionRuleIndex]._actions[actionIndex] = action;
                 General._collectionRules[collectionRuleIndex]._actions[actionIndex]._actionType = typeof(CollectTrace);
+
+                return RedirectToPage("./ActionCreation");
             }
 
-            return RedirectToPage("./ActionCreation");
+            return null;
         }
     }
 }

@@ -53,11 +53,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             }
         }
 
-        public void OnGet()
-        {
-        }
-
-        public IActionResult OnPostNewCollectionRule(string data)
+        public IActionResult OnPostNewCollectionRule()
         {
             CollectionRuleCreationModel.collectionRuleIndex = -1;
 

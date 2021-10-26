@@ -26,10 +26,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             _logger = logger;
         }
 
-        public void OnGet()
-        {
-        }
-
         public static PropertyInfo[] GetConfigurationSettings()
         {
             var props = typeof(CRLimit).GetProperties();
@@ -49,7 +45,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return General.GetStringRepresentation(currLimit, propertyInfo);
         }
 
-        public IActionResult OnPostSubmit(string data)
+        public IActionResult OnPostSubmit()
         {
             var typeProperties = GetConfigurationSettings();
 

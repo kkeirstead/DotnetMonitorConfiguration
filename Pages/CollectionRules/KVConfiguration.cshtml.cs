@@ -44,11 +44,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return ((CollectTrace)General._collectionRules[collectionRuleIndex]._actions[actionIndex]).Providers[providerIndex].Arguments[_key];
         }
 
-        public void OnGet()
-        {
-
-        }
-
         public IActionResult OnPostSubmit(string data)
         {
             if (!(string.IsNullOrEmpty(Key) || string.IsNullOrEmpty(Value)))
@@ -65,6 +60,5 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             return RedirectToPage("./ProviderConfiguration");
         }
-
     }
 }

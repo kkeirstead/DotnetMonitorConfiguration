@@ -25,11 +25,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             _logger = logger;
         }
 
-        public void OnGet()
-        {
-        }
-
-        public IActionResult OnPostWay2(string data)
+        public IActionResult OnPostSubmit()
         {
             if (!string.IsNullOrEmpty(Name))
             {
