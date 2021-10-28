@@ -2,7 +2,7 @@
 
 ## About
 
-The `dotnet monitor` configuration tool is designed to supplement the `dotnet monitor` diagnostic tool. This is not an official component of `dotnet monitor` and is currently considered a prototype with limited functionality. For bug reports or suggestions, file an Issue on GitHub or submit a Pull Request with your proposed changes.
+The `dotnet monitor` configuration tool is designed to supplement the `dotnet monitor` diagnostic tool. This is not an official component of `dotnet monitor` and is currently considered a prototype with limited functionality and testing. For bug reports or suggestions, file an Issue on GitHub or submit a Pull Request with your proposed changes.
 
 ## Usage
 

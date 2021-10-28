@@ -22,7 +22,7 @@ namespace DotnetMonitorConfiguration.Models
 
         public static IEnumerable<string> _actionTypes = new List<string>() { nameof(CollectDump), nameof(CollectGCDump), nameof(CollectLogs), nameof(CollectTrace), nameof(Execute) };
 
-        public static IList<CollectionRule> _collectionRules = new List<CollectionRule>() { };
+        public static List<CollectionRule> _collectionRules = new List<CollectionRule>() { };
 
         public static string GetFormatDescription(Type type)
         {

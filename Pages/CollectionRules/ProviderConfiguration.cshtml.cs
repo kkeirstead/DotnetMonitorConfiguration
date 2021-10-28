@@ -91,8 +91,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
             SaveCurrProvider();
 
-            KVConfigurationModel.providerIndex = providerIndex;
-
             return RedirectToPage("./KVConfiguration");
         }
 
@@ -127,9 +125,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             foreach (var propertyInfo in typeof(EventPipeProvider).GetProperties())
             {
-                bool isRequired = Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute));
-
-                if (isRequired)
+                if (Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute)))
                 {
                     if (string.IsNullOrEmpty(properties[propertyInfo.Name]))
                     {

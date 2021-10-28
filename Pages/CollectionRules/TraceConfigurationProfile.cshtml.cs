@@ -18,10 +18,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
     {
         private readonly ILogger<TraceConfigurationProfileModel> _logger;
 
-        public static Type actionType;
-
-        public static int actionIndex;
-
         [BindProperty]
         public Dictionary<string, string> properties { get; set; }
 
@@ -30,13 +26,9 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             _logger = logger;
         }
 
-        public void OnGet()
-        {
-        }
-
         public static string GetCurrValue(PropertyInfo propertyInfo)
         {
-            return General.GetCurrValueAction(propertyInfo, actionIndex, CollectionRuleCreationModel.crIndex);
+            return General.GetCurrValueAction(propertyInfo, ActionCreationModel.actionIndex, CollectionRuleCreationModel.crIndex);
         }
 
         public static PropertyInfo[] GetConfigurationSettings()
@@ -58,7 +50,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return profileProps.ToArray();
         }
 
-        public IActionResult OnPostSubmit(string data)
+        public IActionResult OnPostSubmit()
         {
             var typeProperties = GetConfigurationSettings();
 
@@ -73,8 +65,8 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 CollectTrace action = (CollectTrace)ctors[0].Invoke(constructorArgs);
                 action.IsProviders = false; // Only used internally to simplify checks
 
-                General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[actionIndex] = action;
-                General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[actionIndex]._actionType = typeof(CollectTrace);
+                General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex] = action;
+                General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]._actionType = typeof(CollectTrace);
 
                 return RedirectToPage("./ActionCreation");
             }

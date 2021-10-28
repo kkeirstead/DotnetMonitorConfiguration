@@ -15,8 +15,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
     {
         private readonly ILogger<KVConfigurationModel> _logger;
 
-        public static int providerIndex;
-
         public static string _key;
 
         [BindProperty]
@@ -37,20 +35,20 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 return "";
             }
 
-            return ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers[providerIndex].Arguments[_key];
+            return ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers[ProviderConfigurationModel.providerIndex].Arguments[_key];
         }
 
         public IActionResult OnPostSubmit()
         {
             if (!(string.IsNullOrEmpty(Key) || string.IsNullOrEmpty(Value)))
             {
-                if (null != ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers[providerIndex].Arguments)
+                if (null != ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers[ProviderConfigurationModel.providerIndex].Arguments)
                 {
-                    ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers[providerIndex].Arguments[Key] = Value;
+                    ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers[ProviderConfigurationModel.providerIndex].Arguments[Key] = Value;
                 }
                 else
                 {
-                    ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers[providerIndex].Arguments = new Dictionary<string, string>() { { Key, Value } };
+                    ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers[ProviderConfigurationModel.providerIndex].Arguments = new Dictionary<string, string>() { { Key, Value } };
                 }
             }
 

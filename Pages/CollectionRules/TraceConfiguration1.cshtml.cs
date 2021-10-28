@@ -15,8 +15,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
     {
         private readonly ILogger<TraceConfiguration1Model> _logger;
 
-        public static Type actionType;
-
         public TraceConfiguration1Model(ILogger<TraceConfiguration1Model> logger)
         {
             _logger = logger;
@@ -42,11 +40,11 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             object[] constructorArgs = new object[typeProperties.Length]; // Just do all null args
 
-            var ctors = actionType.GetConstructors();
+            var ctors = typeof(CollectTrace).GetConstructors();
 
             CRAction action = (CRAction)ctors[0].Invoke(constructorArgs);
 
-            action._actionType = actionType;
+            action._actionType = typeof(CollectTrace);
 
             // Need to create an action before allowing trace configuration...a bit hacky.
             if (ActionCreationModel.actionIndex == General._collectionRules[CollectionRuleCreationModel.crIndex]._actions.Count)

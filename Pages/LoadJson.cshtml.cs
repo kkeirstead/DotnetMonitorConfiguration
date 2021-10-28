@@ -34,12 +34,9 @@ namespace DotnetMonitorConfiguration.Pages
             {
                 try
                 {
-                    List<CollectionRule> collectionRules = General.ConvertJsonToCollectionRules(JsonRules);
+                    List<CollectionRule> newCollectionRules = General.ConvertJsonToCollectionRules(JsonRules);
 
-                    foreach (var collectionRule in collectionRules)
-                    {
-                        General._collectionRules.Add(collectionRule);
-                    }
+                    General._collectionRules.AddRange(newCollectionRules);
                 }
                 catch (Exception ex)
                 {

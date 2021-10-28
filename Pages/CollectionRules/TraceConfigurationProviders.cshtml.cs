@@ -19,8 +19,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
     {
         private readonly ILogger<TraceConfigurationProvidersModel> _logger;
 
-        public static int actionIndex;
-
         [BindProperty]
         public Dictionary<string, string> properties { get; set; }
 
@@ -31,7 +29,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static string GetCurrValue(PropertyInfo propertyInfo)
         {
-            return General.GetCurrValueAction(propertyInfo, actionIndex, CollectionRuleCreationModel.crIndex);
+            return General.GetCurrValueAction(propertyInfo, ActionCreationModel.actionIndex, CollectionRuleCreationModel.crIndex);
         }
 
         public static PropertyInfo[] GetConfigurationSettings(bool includeEPP)
@@ -58,9 +56,9 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
             List<EventPipeProvider> epProviders = new();
 
-            if (actionIndex != -1)
+            if (ActionCreationModel.actionIndex != General._collectionRules[CollectionRuleCreationModel.crIndex]._actions.Count)
             {
-                CRAction action = General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[actionIndex];
+                CRAction action = General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex];
 
                 epProviders = (null != propertyInfo.GetValue(action)) ? (List<EventPipeProvider>)propertyInfo.GetValue(action) : epProviders;
             }
@@ -88,7 +86,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public IActionResult OnPostDeleteEPP(string data)
         {
-            ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[actionIndex]).Providers.RemoveAt(int.Parse(data));
+            ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers.RemoveAt(int.Parse(data));
 
             return null;
         }
@@ -108,10 +106,10 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 CollectTrace action = (CollectTrace)ctors[0].Invoke(constructorArgs);
                 action.IsProviders = true; // Only used internally to simplify checks
 
-                action.Providers = ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[actionIndex]).Providers;
+                action.Providers = ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers;
 
-                General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[actionIndex] = action;
-                General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[actionIndex]._actionType = typeof(CollectTrace);
+                General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex] = action;
+                General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]._actionType = typeof(CollectTrace);
 
                 return true;
             }

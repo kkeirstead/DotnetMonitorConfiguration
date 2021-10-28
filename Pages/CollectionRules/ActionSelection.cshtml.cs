@@ -28,8 +28,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
             if (typeof(CollectTrace) == t)
             {
-                TraceConfiguration1Model.actionType = t;
-
                 return RedirectToPage("./TraceConfiguration1");
             }
             else 

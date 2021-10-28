@@ -49,14 +49,10 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             {
                 if (((CollectTrace)currAction).IsProviders)
                 {
-                    TraceConfigurationProvidersModel.actionIndex = actionIndex;
-
                     return RedirectToPage("./TraceConfigurationProviders");
                 }
                 else
                 {
-                    TraceConfigurationProfileModel.actionIndex = actionIndex;
-
                     return RedirectToPage("./TraceConfigurationProfile");
                 }
             }
