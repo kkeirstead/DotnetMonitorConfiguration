@@ -24,6 +24,6 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules
 
         public TimeSpan? RuleDuration { get; set; }
 
-        internal string _documentationLink { get { return "https://github.com/dotnet/dotnet-monitor/blob/main/documentation/configuration.md#limits"; } }
+        public const string _documentationLink = "https://github.com/dotnet/dotnet-monitor/blob/main/documentation/configuration.md#limits";
     }
 }

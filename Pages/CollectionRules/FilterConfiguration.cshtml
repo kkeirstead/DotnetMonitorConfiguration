@@ -1,7 +1,18 @@
 ﻿@page
 @using DotnetMonitorConfiguration.Models
 @using System.ComponentModel.DataAnnotations
+@using DotnetMonitorConfiguration.Models.Collection_Rules
 @model FilterConfigurationModel
+
+<div class="row-narrow-dark">
+    <div class="label">Filter</div>
+    @if (!string.IsNullOrEmpty(CRFilter._documentationLink))
+    {
+        <a href=@CRFilter._documentationLink target="_blank" class="sub-label">Learn More</a>
+    }
+</div>
+
+<br />
 
 <form method="post">
     <div class="row-narrow">

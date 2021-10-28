@@ -1,7 +1,18 @@
 ﻿@page
 @using DotnetMonitorConfiguration.Models
 @using System.ComponentModel.DataAnnotations
+@using DotnetMonitorConfiguration.Models.Collection_Rules
 @model LimitConfigurationModel
+
+<div class="row-narrow-dark">
+    <div class="label">Limit</div>
+    @if (!string.IsNullOrEmpty(CRLimit._documentationLink))
+    {
+        <a href=@CRLimit._documentationLink target="_blank" class="sub-label">Learn More</a>
+    }
+</div>
+
+<br />
 
 <form method="post">
   <div class="row-narrow">
