@@ -11,3 +11,7 @@ The `dotnet monitor` configuration tool currently only supports doing configurat
 ## Future Support
 
 The `dotnet monitor` configuration tool is currently a low priority and is not being regularly updated. As a result, at any given time there may be missing or broken functionality as `dotnet monitor` receives updates.
+
+## License
+
+The DotnetMonitorConfiguration tool is licensed under the [MIT](LICENSE.TXT) license.
