@@ -9,14 +9,13 @@
     <fieldset>
 
         <div class="label">Key</div>
+        <input asp-for=Key placeholder="Key" value=@KVConfigurationModel._key/>
 
         @{
             string val = KVConfigurationModel.GetValue();
         }
-        <input asp-for=Key placeholder="Key" value=@KVConfigurationModel._key/>
 
         <div class="label">Value</div>
-
         <input asp-for=Value placeholder="Value" value=@val/>
 
     </fieldset>

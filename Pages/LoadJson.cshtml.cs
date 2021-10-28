@@ -26,12 +26,7 @@ namespace DotnetMonitorConfiguration.Pages
             _logger = logger;
         }
 
-        public void OnGet()
-        {
-
-        }
-
-        public IActionResult OnPostConvertJSON(string data)
+        public IActionResult OnPostConvertJSON()
         {
             Console.WriteLine("JsonRules: " + JsonRules);
 

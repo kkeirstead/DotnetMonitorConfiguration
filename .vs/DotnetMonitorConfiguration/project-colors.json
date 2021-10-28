@@ -15,7 +15,12 @@
       "ProjectGuid": "16757c2a-5497-4ce6-8d53-ec8dffa8ad94",
       "DisplayName": "DotnetMonitorConfigurationTests",
       "ColorIndex": 1
+    },
+    "f5fe98f9-b8f4-4f20-af39-8a41a715178f": {
+      "ProjectGuid": "f5fe98f9-b8f4-4f20-af39-8a41a715178f",
+      "DisplayName": "DummyTest",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }

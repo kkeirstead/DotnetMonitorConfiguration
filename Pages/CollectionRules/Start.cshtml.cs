@@ -44,11 +44,13 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 if (null == General._collectionRules[index]._trigger)
                 {
                     General._collectionRules.RemoveAt(index);
+                    continue;
                 }
 
                 if (null == General._collectionRules[index]._limit)
                 {
                     General._collectionRules[index]._limit = new Models.Collection_Rules.CRLimit(null, null, null);
+                    continue;
                 }
             }
         }

@@ -15,6 +15,8 @@
         <fieldset>
             <input asp-for=JsonRules placeholder="Your Json Here..."/>
         </fieldset>
+        <div class="sub-label">To begin, copy your rules from your configuration (not including the "CollectionRules" header). Then, put a { before the first rule, and a } after the last rule. You'll be automatically informed if your JSON is valid.</div>
     </div>
+
     <button class="submit-button" type="submit" asp-page-handler="ConvertJSON" id="submitButton">Submit</button>
 </form>

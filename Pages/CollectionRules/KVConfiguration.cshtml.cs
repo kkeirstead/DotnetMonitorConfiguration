@@ -44,7 +44,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return ((CollectTrace)General._collectionRules[collectionRuleIndex]._actions[actionIndex]).Providers[providerIndex].Arguments[_key];
         }
 
-        public IActionResult OnPostSubmit(string data)
+        public IActionResult OnPostSubmit()
         {
             if (!(string.IsNullOrEmpty(Key) || string.IsNullOrEmpty(Value)))
             {

@@ -44,6 +44,8 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
                 ActionConfigurationModel.collectionRuleIndex = collectionRuleIndex;
 
+                ActionConfigurationModel.actionIndex = -1;
+
                 return RedirectToPage("./ActionConfiguration");
             }
         }
