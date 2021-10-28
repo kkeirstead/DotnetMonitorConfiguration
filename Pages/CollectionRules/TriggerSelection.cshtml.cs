@@ -18,11 +18,9 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         [BindProperty]
         public string triggerType { get; set; }
 
-        public static int collectionRuleIndex;
-
         public static string GetExistingTriggerTypeName()
         {
-            CRTrigger trigger = General._collectionRules[collectionRuleIndex]._trigger;
+            CRTrigger trigger = General._collectionRules[CollectionRuleCreationModel.crIndex]._trigger;
             return (null != trigger) ? trigger._triggerType.Name : "";
         }
 
@@ -31,17 +29,11 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             _logger = logger;
         }
 
-        public void OnGet()
-        {
-        }
-
         public IActionResult OnPostTriggerType(string data)
         {
             Type t = Type.GetType("DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types." + data);
 
             TriggerConfigurationModel.triggerType = t;
-
-            TriggerConfigurationModel.collectionRuleIndex = collectionRuleIndex;
 
             return RedirectToPage("./TriggerConfiguration"); 
         }

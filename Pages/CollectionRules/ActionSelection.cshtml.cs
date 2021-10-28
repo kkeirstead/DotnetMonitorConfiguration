@@ -17,8 +17,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         [BindProperty]
         public string actionType { get; set; }
 
-        public static int collectionRuleIndex;
-
         public ActionSelectionModel(ILogger<ActionSelectionModel> logger)
         {
             _logger = logger;
@@ -32,19 +30,11 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             {
                 TraceConfiguration1Model.actionType = t;
 
-                TraceConfiguration1Model.actionIndex = -1;
-
-                TraceConfiguration1Model.collectionRuleIndex = collectionRuleIndex;
-
                 return RedirectToPage("./TraceConfiguration1");
             }
             else 
             {
                 ActionConfigurationModel.actionType = t;
-
-                ActionConfigurationModel.collectionRuleIndex = collectionRuleIndex;
-
-                ActionConfigurationModel.actionIndex = -1;
 
                 return RedirectToPage("./ActionConfiguration");
             }

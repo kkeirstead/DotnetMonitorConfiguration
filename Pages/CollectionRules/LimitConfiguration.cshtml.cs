@@ -16,8 +16,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
     {
         private readonly ILogger<LimitConfigurationModel> _logger;
 
-        public static int collectionRuleIndex;
-
         [BindProperty]
         public Dictionary<string, string> properties { get; set; }
 
@@ -35,7 +33,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static string GetCurrValue(PropertyInfo propertyInfo)
         {
-            CRLimit currLimit = General._collectionRules[collectionRuleIndex]._limit;
+            CRLimit currLimit = General._collectionRules[CollectionRuleCreationModel.crIndex]._limit;
 
             if (currLimit == null)
             {
@@ -57,7 +55,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
                 CRLimit limit = (CRLimit)ctors[0].Invoke(constructorArgs);
 
-                General._collectionRules[collectionRuleIndex]._limit = limit;
+                General._collectionRules[CollectionRuleCreationModel.crIndex]._limit = limit;
 
                 return RedirectToPage("./Start");
             }

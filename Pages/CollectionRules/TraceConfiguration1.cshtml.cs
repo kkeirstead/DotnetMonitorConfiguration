@@ -17,10 +17,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static Type actionType;
 
-        public static int collectionRuleIndex;
-
-        public static int actionIndex;
-
         public TraceConfiguration1Model(ILogger<TraceConfiguration1Model> logger)
         {
             _logger = logger;
@@ -30,20 +26,12 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
             CreateDummyAction();
 
-            TraceConfigurationProfileModel.collectionRuleIndex = collectionRuleIndex;
-
-            TraceConfigurationProfileModel.actionIndex = actionIndex;
-
             return RedirectToPage("./TraceConfigurationProfile");
         }
 
         public IActionResult OnPostProviders()
         {
             CreateDummyAction();
-
-            TraceConfigurationProvidersModel.collectionRuleIndex = collectionRuleIndex;
-
-            TraceConfigurationProvidersModel.actionIndex = actionIndex;
 
             return RedirectToPage("./TraceConfigurationProviders");
         }
@@ -61,10 +49,9 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             action._actionType = actionType;
 
             // Need to create an action before allowing trace configuration...a bit hacky.
-            if (actionIndex == -1)
+            if (ActionCreationModel.actionIndex == General._collectionRules[CollectionRuleCreationModel.crIndex]._actions.Count)
             {
-                General._collectionRules[collectionRuleIndex]._actions.Add(action);
-                actionIndex = General._collectionRules[collectionRuleIndex]._actions.Count - 1;
+                General._collectionRules[CollectionRuleCreationModel.crIndex]._actions.Add(action);
             }
         }
     }

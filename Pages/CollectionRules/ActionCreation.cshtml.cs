@@ -18,7 +18,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static List<CRAction> actionList = new List<CRAction>();
 
-        public static int collectionRuleIndex;
+        public static int actionIndex;
 
         public ActionCreationModel(ILogger<ActionCreationModel> logger)
         {
@@ -27,15 +27,13 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public IActionResult OnPostNewAction()
         {
-            ActionSelectionModel.collectionRuleIndex = collectionRuleIndex;
+            actionIndex = General._collectionRules[CollectionRuleCreationModel.crIndex]._actions.Count; // Haven't yet made the action, but setting the index
 
             return RedirectToPage("./ActionSelection");
         }
 
         public IActionResult OnPostDone()
         {
-            FilterCreationModel.collectionRuleIndex = collectionRuleIndex;
-
             return RedirectToPage("./FilterCreation");
         }
 
@@ -43,7 +41,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
             int actionIndex = int.Parse(data);
 
-            CRAction currAction = General._collectionRules[collectionRuleIndex]._actions[actionIndex];
+            CRAction currAction = General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[actionIndex];
             
             Type actionType = currAction._actionType;
 
@@ -51,14 +49,12 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             {
                 if (((CollectTrace)currAction).IsProviders)
                 {
-                    TraceConfigurationProvidersModel.collectionRuleIndex = collectionRuleIndex;
                     TraceConfigurationProvidersModel.actionIndex = actionIndex;
 
                     return RedirectToPage("./TraceConfigurationProviders");
                 }
                 else
                 {
-                    TraceConfigurationProfileModel.collectionRuleIndex = collectionRuleIndex;
                     TraceConfigurationProfileModel.actionIndex = actionIndex;
 
                     return RedirectToPage("./TraceConfigurationProfile");
@@ -66,8 +62,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             }
             else
             {
-                ActionConfigurationModel.collectionRuleIndex = collectionRuleIndex;
-                ActionConfigurationModel.actionIndex = actionIndex;
                 ActionConfigurationModel.actionType = actionType;
 
                 return RedirectToPage("./ActionConfiguration");
@@ -78,7 +72,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
             int indexToDelete = int.Parse(data);
 
-            General._collectionRules[collectionRuleIndex]._actions.RemoveAt(indexToDelete);
+            General._collectionRules[CollectionRuleCreationModel.crIndex]._actions.RemoveAt(indexToDelete);
 
             return null;
         }
@@ -87,16 +81,16 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
             int indexToDecrease = int.Parse(data);
 
-            if (indexToDecrease == General._collectionRules[collectionRuleIndex]._actions.Count - 1)
+            if (indexToDecrease == General._collectionRules[CollectionRuleCreationModel.crIndex]._actions.Count - 1)
             {
                 return null;
             }
 
-            CRAction tempAction = General._collectionRules[collectionRuleIndex]._actions[indexToDecrease];
+            CRAction tempAction = General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[indexToDecrease];
 
-            General._collectionRules[collectionRuleIndex]._actions[indexToDecrease] = General._collectionRules[collectionRuleIndex]._actions[indexToDecrease + 1];
+            General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[indexToDecrease] = General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[indexToDecrease + 1];
 
-            General._collectionRules[collectionRuleIndex]._actions[indexToDecrease + 1] = tempAction;
+            General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[indexToDecrease + 1] = tempAction;
 
             return null;
         }
@@ -110,11 +104,11 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 return null;
             }
 
-            CRAction tempAction = General._collectionRules[collectionRuleIndex]._actions[indexToIncrease];
+            CRAction tempAction = General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[indexToIncrease];
 
-            General._collectionRules[collectionRuleIndex]._actions[indexToIncrease] = General._collectionRules[collectionRuleIndex]._actions[indexToIncrease - 1];
+            General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[indexToIncrease] = General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[indexToIncrease - 1];
 
-            General._collectionRules[collectionRuleIndex]._actions[indexToIncrease - 1] = tempAction;
+            General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[indexToIncrease - 1] = tempAction;
 
             return null;
         }

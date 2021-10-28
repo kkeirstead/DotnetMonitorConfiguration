@@ -57,14 +57,14 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public IActionResult OnPostNewCollectionRule()
         {
-            CollectionRuleCreationModel.collectionRuleIndex = -1;
+            CollectionRuleCreationModel.crIndex = -1;
 
             return RedirectToPage("./CollectionRuleCreation");
         }
 
         public IActionResult OnPostSelectCollectionRule(string data)
         {
-            CollectionRuleCreationModel.collectionRuleIndex = int.Parse(data);
+            CollectionRuleCreationModel.crIndex = int.Parse(data);
 
             return RedirectToPage("./CollectionRuleCreation");
         }

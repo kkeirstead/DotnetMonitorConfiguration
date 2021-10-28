@@ -12,6 +12,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
+using DotnetMonitorConfiguration.Pages.CollectionRules;
 
 namespace DotnetMonitorConfiguration.Models
 {
@@ -383,12 +384,12 @@ namespace DotnetMonitorConfiguration.Models
 
         public static string GetCurrValueAction(PropertyInfo propertyInfo, int actionIndex, int collectionRuleIndex)
         {
-            if (actionIndex == -1)
+            if (actionIndex == _collectionRules[CollectionRuleCreationModel.crIndex]._actions.Count)
             {
                 return "";
             }
 
-            CRAction currAction = _collectionRules[collectionRuleIndex]._actions[actionIndex];
+            CRAction currAction = _collectionRules[collectionRuleIndex]._actions[ActionCreationModel.actionIndex];
 
             return GetStringRepresentation(currAction, propertyInfo);
         }

@@ -17,8 +17,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static List<CRAction> actionList = new List<CRAction>();
 
-        public static int collectionRuleIndex;
-
         public FilterCreationModel(ILogger<FilterCreationModel> logger)
         {
             _logger = logger;
@@ -30,7 +28,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public IActionResult OnPostNewFilter()
         {
-            FilterConfigurationModel.collectionRuleIndex = collectionRuleIndex;
             FilterConfigurationModel.filterIndex = -1;
 
             return RedirectToPage("./FilterConfiguration");
@@ -38,14 +35,11 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public IActionResult OnPostDone()
         {
-            LimitConfigurationModel.collectionRuleIndex = collectionRuleIndex;
-
             return RedirectToPage("./LimitConfiguration");
         }
 
         public IActionResult OnPostFilterSelect(string data)
         {
-            FilterConfigurationModel.collectionRuleIndex = collectionRuleIndex;
             FilterConfigurationModel.filterIndex = int.Parse(data);
 
             return RedirectToPage("./FilterConfiguration");
@@ -55,7 +49,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
             int indexToDelete = int.Parse(data);
 
-            General._collectionRules[collectionRuleIndex]._filters.RemoveAt(indexToDelete);
+            General._collectionRules[CollectionRuleCreationModel.crIndex]._filters.RemoveAt(indexToDelete);
 
             return null;
         }

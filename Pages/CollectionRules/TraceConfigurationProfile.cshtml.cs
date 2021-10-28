@@ -11,7 +11,6 @@ using System.Linq;
 using System.Reflection;
 using DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types;
 using DotnetMonitorConfiguration.Models;
-using System.ComponentModel.DataAnnotations;
 
 namespace DotnetMonitorConfiguration.Pages.CollectionRules
 {
@@ -20,8 +19,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         private readonly ILogger<TraceConfigurationProfileModel> _logger;
 
         public static Type actionType;
-
-        public static int collectionRuleIndex;
 
         public static int actionIndex;
 
@@ -39,7 +36,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static string GetCurrValue(PropertyInfo propertyInfo)
         {
-            return General.GetCurrValueAction(propertyInfo, actionIndex, collectionRuleIndex);
+            return General.GetCurrValueAction(propertyInfo, actionIndex, CollectionRuleCreationModel.crIndex);
         }
 
         public static PropertyInfo[] GetConfigurationSettings()
@@ -76,8 +73,8 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 CollectTrace action = (CollectTrace)ctors[0].Invoke(constructorArgs);
                 action.IsProviders = false; // Only used internally to simplify checks
 
-                General._collectionRules[collectionRuleIndex]._actions[actionIndex] = action;
-                General._collectionRules[collectionRuleIndex]._actions[actionIndex]._actionType = typeof(CollectTrace);
+                General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[actionIndex] = action;
+                General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[actionIndex]._actionType = typeof(CollectTrace);
 
                 return RedirectToPage("./ActionCreation");
             }

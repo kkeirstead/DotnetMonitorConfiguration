@@ -16,8 +16,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
     {
         private readonly ILogger<FilterConfigurationModel> _logger;
 
-        public static int collectionRuleIndex;
-
         public static int filterIndex;
 
         [BindProperty]
@@ -42,7 +40,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 return "";
             }
 
-            CRFilter currFilter = General._collectionRules[collectionRuleIndex]._filters[filterIndex];
+            CRFilter currFilter = General._collectionRules[CollectionRuleCreationModel.crIndex]._filters[filterIndex];
 
             return General.GetStringRepresentation(currFilter, propertyInfo);
         }
@@ -59,9 +57,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
                 CRFilter filter = (CRFilter)ctors[0].Invoke(constructorArgs);
 
-                General._collectionRules[collectionRuleIndex]._filters.Add(filter);
-
-                FilterCreationModel.collectionRuleIndex = collectionRuleIndex;
+                General._collectionRules[CollectionRuleCreationModel.crIndex]._filters.Add(filter);
 
                 return RedirectToPage("./FilterCreation");
             }

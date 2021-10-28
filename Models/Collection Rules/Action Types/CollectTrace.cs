@@ -77,18 +77,11 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
         public const string _documentationLink = "https://github.com/dotnet/dotnet-monitor/blob/main/documentation/configuration.md#collecttrace-action";
     }
 
-
-
-
-    [System.AttributeUsage(AttributeTargets.All,
-                       AllowMultiple = true) 
-    ]
-    public class ProvidersAttribute : System.Attribute
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
+    public class ProvidersAttribute : Attribute
     { }
 
-    [System.AttributeUsage(AttributeTargets.All,
-                   AllowMultiple = true)
-]
-    public class ProfileAttribute : System.Attribute
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
+    public class ProfileAttribute : Attribute
     { }
 }

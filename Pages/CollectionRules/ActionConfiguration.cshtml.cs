@@ -19,10 +19,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static Type actionType;
 
-        public static int collectionRuleIndex;
-
-        public static int actionIndex;
-
         [BindProperty]
         public Dictionary<string, string> properties { get; set; }
 
@@ -33,14 +29,12 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static PropertyInfo[] GetConfigurationSettings()
         {
-            var props = actionType.GetProperties();
-
-            return props;
+            return actionType.GetProperties();
         }
 
         public static string GetCurrValue(PropertyInfo propertyInfo)
         {
-            return General.GetCurrValueAction(propertyInfo, actionIndex, collectionRuleIndex);
+            return General.GetCurrValueAction(propertyInfo, ActionCreationModel.actionIndex, CollectionRuleCreationModel.crIndex);
         }
 
         public static string GetDocumentationLink()
@@ -62,16 +56,14 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
                 action._actionType = actionType;
 
-                if (actionIndex == -1)
+                if (ActionCreationModel.actionIndex == General._collectionRules[CollectionRuleCreationModel.crIndex]._actions.Count)
                 {
-                    General._collectionRules[collectionRuleIndex]._actions.Add(action);
+                    General._collectionRules[CollectionRuleCreationModel.crIndex]._actions.Add(action);
                 }
                 else
                 {
-                    General._collectionRules[collectionRuleIndex]._actions[actionIndex] = action;
+                    General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex] = action;
                 }
-
-                ActionCreationModel.collectionRuleIndex = collectionRuleIndex;
 
                 return RedirectToPage("./ActionCreation");
             }

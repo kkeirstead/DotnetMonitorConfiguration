@@ -21,10 +21,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
     {
         private readonly ILogger<ProviderConfigurationModel> _logger;
 
-        public static int collectionRuleIndex;
-
-        public static int actionIndex;
-
         public static int providerIndex;
 
         [BindProperty]
@@ -40,7 +36,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             Dictionary<string, string> kvPairs = new();
             if (providerIndex != -1)
             {
-                kvPairs = ((CollectTrace)General._collectionRules[collectionRuleIndex]._actions[actionIndex]).Providers[providerIndex].Arguments ?? kvPairs;
+                kvPairs = ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers[providerIndex].Arguments ?? kvPairs;
             }
 
             List<(string, string)> keyValuePairs = new();
@@ -60,7 +56,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 return "";
             }
 
-            List<EventPipeProvider> providers = ((CollectTrace)General._collectionRules[collectionRuleIndex]._actions[actionIndex]).Providers;
+            List<EventPipeProvider> providers = ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers;
 
             EventPipeProvider currEPP = providers[providerIndex];
 
@@ -71,7 +67,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
             if (providerIndex != -1)
             {
-                return ((CollectTrace)General._collectionRules[collectionRuleIndex]._actions[actionIndex]).Providers[providerIndex].Arguments ?? new Dictionary<string, string>();
+                return ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers[providerIndex].Arguments ?? new Dictionary<string, string>();
             }
 
             return new Dictionary<string, string>();
@@ -95,10 +91,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
             SaveCurrProvider();
 
-            KVConfigurationModel.collectionRuleIndex = collectionRuleIndex;
-
-            KVConfigurationModel.actionIndex = actionIndex;
-
             KVConfigurationModel.providerIndex = providerIndex;
 
             return RedirectToPage("./KVConfiguration");
@@ -113,19 +105,19 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             epp.EventLevel = (properties["EventLevel"] != null) ? (EventLevel)Enum.Parse(typeof(EventLevel), properties["EventLevel"]) : epp.EventLevel;
             epp.Arguments = GenerateKVPairs().ToDictionary(tuple => tuple.Item1, tuple => tuple.Item2);
 
-            if (null == ((CollectTrace)General._collectionRules[collectionRuleIndex]._actions[actionIndex]).Providers)
+            if (null == ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers)
             {
-                ((CollectTrace)General._collectionRules[collectionRuleIndex]._actions[actionIndex]).Providers = new List<EventPipeProvider>();
+                ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers = new List<EventPipeProvider>();
             }
 
             if (providerIndex == -1)
             {
-                ((CollectTrace)General._collectionRules[collectionRuleIndex]._actions[actionIndex]).Providers.Add(epp);
-                providerIndex = ((CollectTrace)General._collectionRules[collectionRuleIndex]._actions[actionIndex]).Providers.Count - 1;
+                ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers.Add(epp);
+                providerIndex = ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers.Count - 1;
             }
             else
             {
-                ((CollectTrace)General._collectionRules[collectionRuleIndex]._actions[actionIndex]).Providers[providerIndex] = epp;
+                ((CollectTrace)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).Providers[providerIndex] = epp;
             }
         }
 

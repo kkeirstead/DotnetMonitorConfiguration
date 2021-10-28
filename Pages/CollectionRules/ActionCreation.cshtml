@@ -12,31 +12,31 @@
 
     <div class="row-narrow">
         <div class="label">Actions</div>
-    @{
-            int index = 0;
-    }
+        @{
+                int index = 0;
+        }
 
-    @foreach(var crAction in General._collectionRules[ActionCreationModel.collectionRuleIndex]._actions)
-    {
-        <div class="column-wide">
-            @{string val = (string.IsNullOrEmpty(crAction.Name)) ? crAction.GetType().Name : crAction.Name;}
-            <button class="button" type="submit" asp-route-data=@index.ToString() asp-page-handler="ActionSelect">@val</button>
-        </div>
+        @foreach(var crAction in General._collectionRules[CollectionRuleCreationModel.crIndex]._actions)
+        {
+            <div class="column-wide">
+                @{string val = (string.IsNullOrEmpty(crAction.Name)) ? crAction.GetType().Name : crAction.Name;}
+                <button class="button" type="submit" asp-route-data=@index.ToString() asp-page-handler="ActionSelect">@val</button>
+            </div>
 
-        <div class="column-ultra-narrow">
-            <button class="delete-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Delete">X</button>
-        </div>
+            <div class="column-ultra-narrow">
+                <button class="delete-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Delete">X</button>
+            </div>
 
-        <div class="column-ultra-narrow">
-            <button class="misc-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Down">▼</button>
-        </div>
+            <div class="column-ultra-narrow">
+                <button class="misc-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Down">▼</button>
+            </div>
 
-        <div class="column-ultra-narrow">
-            <button class="misc-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Up">▲</button>
-        </div>
+            <div class="column-ultra-narrow">
+                <button class="misc-button" type="submit" asp-route-data=@index.ToString() asp-page-handler="Up">▲</button>
+            </div>
 
-        ++index;
-    }
+            ++index;
+        }
     </div>
 </form>
 

@@ -18,7 +18,7 @@
               int index = 0;
         }
 
-        @foreach(var crFilter in General._collectionRules[FilterCreationModel.collectionRuleIndex]._filters)
+        @foreach(var crFilter in General._collectionRules[CollectionRuleCreationModel.crIndex]._filters)
         {
             <div class="column-ultra-wide">
                  <button class="button" type="submit" asp-route-data=@index.ToString() asp-page-handler="FilterSelect">@crFilter.Key</button>

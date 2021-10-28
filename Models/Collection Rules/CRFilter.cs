@@ -10,11 +10,11 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules
 {
     public class CRFilter
     {
-        public CRFilter(ProcessFilterKey key, string value, ProcessFilterType matchType)
+        public CRFilter(ProcessFilterKey key, string value, ProcessFilterType? matchType)
         {
             Key = key;
             Value = value;
-            MatchType = matchType;
+            MatchType = (null != matchType) ? matchType : MatchType;
         }
 
         [Required]
@@ -24,7 +24,7 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules
         public string Value { get; set; }
 
         [DefaultValue(ProcessFilterType.Exact)]
-        public ProcessFilterType MatchType { get; set; }
+        public ProcessFilterType? MatchType { get; set; }
 
         internal string _documentationLink { get { return "https://github.com/dotnet/dotnet-monitor/blob/main/documentation/configuration.md#filters"; } }
     }

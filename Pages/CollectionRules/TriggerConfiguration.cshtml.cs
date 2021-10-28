@@ -19,8 +19,6 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static Type triggerType;
 
-        public static int collectionRuleIndex;
-
         [BindProperty]
         public Dictionary<string, string> properties { get; set; }
 
@@ -31,7 +29,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static string GetCurrValue(PropertyInfo propertyInfo)
         {
-            CRTrigger currTrigger = General._collectionRules[collectionRuleIndex]._trigger;
+            CRTrigger currTrigger = General._collectionRules[CollectionRuleCreationModel.crIndex]._trigger;
 
             if (currTrigger == null)
             {
@@ -66,9 +64,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 CRTrigger trigger = (CRTrigger)ctors[0].Invoke(constructorArgs);
                 trigger._triggerType = triggerType;
 
-                General._collectionRules[collectionRuleIndex]._trigger = trigger;
-
-                ActionCreationModel.collectionRuleIndex = collectionRuleIndex;
+                General._collectionRules[CollectionRuleCreationModel.crIndex]._trigger = trigger;
 
                 return RedirectToPage("./ActionCreation");
             }
