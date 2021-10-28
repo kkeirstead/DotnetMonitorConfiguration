@@ -73,6 +73,8 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
         Type CRAction._actionType { get; set; }
 
         internal bool IsProviders { get; set; }
+
+        public const string _documentationLink = "https://github.com/dotnet/dotnet-monitor/blob/main/documentation/configuration.md#collecttrace-action";
     }
 
 

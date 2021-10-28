@@ -184,6 +184,13 @@ select {
     border-radius: 5px;
 }
 
+.row-narrow-dark {
+    background-color: #D2D2D2;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 5px;
+}
+
 .label {
     font-size: 28px;
     text-align: center;

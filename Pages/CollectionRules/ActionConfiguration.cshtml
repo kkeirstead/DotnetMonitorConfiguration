@@ -1,7 +1,18 @@
 ﻿@page
 @using DotnetMonitorConfiguration.Models
 @using System.ComponentModel.DataAnnotations
+@using DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
 @model ActionConfigurationModel
+
+<div class="row-narrow-dark">
+    <div class="label">@ActionConfigurationModel.actionType.Name</div>
+    @if (!string.IsNullOrEmpty(@ActionConfigurationModel.GetDocumentationLink()))
+    {
+        <a href=@ActionConfigurationModel.GetDocumentationLink() target="_blank" class="sub-label">Learn More</a>
+    }
+</div>
+
+<br />
 
 <form method="post">
     <div class="row-narrow">
@@ -9,6 +20,7 @@
         @{
             int index = 0;
         }
+
         @foreach(var propertyInfo in ActionConfigurationModel.GetConfigurationSettings())
         {
             Type currType = General.GetType(@propertyInfo.PropertyType);

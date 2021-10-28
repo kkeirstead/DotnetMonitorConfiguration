@@ -25,5 +25,7 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules
 
         [DefaultValue(ProcessFilterType.Exact)]
         public ProcessFilterType MatchType { get; set; }
+
+        internal string _documentationLink { get { return "https://github.com/dotnet/dotnet-monitor/blob/main/documentation/configuration.md#filters"; } }
     }
 }

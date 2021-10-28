@@ -3,10 +3,12 @@
 // See the LICENSE file in the project root for more information.
 
 using DotnetMonitorConfiguration.Models;
+using DotnetMonitorConfiguration.Models.Collection_Rules;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 
 namespace DotnetMonitorConfiguration.Pages
 {
@@ -37,7 +39,12 @@ namespace DotnetMonitorConfiguration.Pages
             {
                 try
                 {
-                    General.ConvertJsonToCollectionRules(JsonRules);
+                    List<CollectionRule> collectionRules = General.ConvertJsonToCollectionRules(JsonRules);
+
+                    foreach (var collectionRule in collectionRules)
+                    {
+                        General._collectionRules.Add(collectionRule);
+                    }
                 }
                 catch (Exception ex)
                 {

@@ -2,7 +2,15 @@
 @using DotnetMonitorConfiguration.Models
 @using System.ComponentModel.DataAnnotations
 @using DotnetMonitorConfiguration.Models.BorrowedFromDM
+@using DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
 @model TraceConfigurationProvidersModel
+
+<div class="row-narrow-dark">
+    <div class="label">CollectTrace</div>
+    <a href=@CollectTrace._documentationLink target="_blank" class="sub-label">Learn More</a>
+</div>
+
+<br />
 
 <form method="post">
     <div class="row-narrow">

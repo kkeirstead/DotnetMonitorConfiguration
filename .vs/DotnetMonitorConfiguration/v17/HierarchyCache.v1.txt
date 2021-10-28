@@ -1,0 +1,376 @@
+﻿++Solution 'DotnetMonitorConfiguration' ‎(1 of 1 project)
+++DotnetMonitorConfiguration
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:c:\users\kkeirstead\dotnetmonitorconfigurationtests\dotnetmonitorconfiguration
+i:{00000000-0000-0000-0000-000000000000}:DotnetMonitorConfiguration
+++Connected Services 
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:>7617
+++Dependencies
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:>3417
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:>7616
+++Properties
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\properties\
+++wwwroot
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\
+++css
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\css\
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\css\
+++site.css
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\css\site.css
+++js
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\js\
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\js\
+++lib
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\
+++favicon.ico
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\favicon.ico
+++Models
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\
+++BorrowedFromDM
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\
+++AspNetRequestCountOptionsDefaults.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\aspnetrequestcountoptionsdefaults.cs
+++AspNetRequestDurationOptionsDefaults.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\aspnetrequestdurationoptionsdefaults.cs
+++AspNetResponseStatusOptionsDefaults.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\aspnetresponsestatusoptionsdefaults.cs
+++CollectDumpOptionsDefaults.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\collectdumpoptionsdefaults.cs
+++CollectionRuleActionOptions.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\collectionruleactionoptions.cs
+++CollectionRuleActionOptionsDefaults.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\collectionruleactionoptionsdefaults.cs
+++CollectionRuleLimitsOptions.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\collectionrulelimitsoptions.cs
+++CollectionRuleLimitsOptionsDefaults.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\collectionrulelimitsoptionsdefaults.cs
+++CollectionRuleOptions.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\collectionruleoptions.cs
+++CollectionRuleOptionsConstants.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\collectionruleoptionsconstants.cs
+++CollectionRuleTriggerOptions.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\collectionruletriggeroptions.cs
+++CollectLogsOptionsDefaults.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\collectlogsoptionsdefaults.cs
+++CollectTraceOptionsDefaults.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\collecttraceoptionsdefaults.cs
+++DumpType.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\dumptype.cs
+++EventCounterOptionsDefaults.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\eventcounteroptionsdefaults.cs
+++EventPipeProvider.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\eventpipeprovider.cs
+++ExecuteOptionsDefaults.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\executeoptionsdefaults.cs
+++KnownCollectionRuleActions.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\knowncollectionruleactions.cs
+++KnownCollectionRuleTriggers.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\knowncollectionruletriggers.cs
+++LogFormat.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\logformat.cs
+++ProcessFilterOptions.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\processfilteroptions.cs
+++RootOptions.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\rootoptions.cs
+++SchemaGenerator.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\schemagenerator.cs
+++TraceProfile.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\traceprofile.cs
+++TriggerOptionsConstants.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\borrowedfromdm\triggeroptionsconstants.cs
+++Collection Rules
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\
+++Action Types
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\action types\
+++CollectDump.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\action types\collectdump.cs
+++CollectGCDump.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\action types\collectgcdump.cs
+++CollectLogs.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\action types\collectlogs.cs
+++CollectTrace.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\action types\collecttrace.cs
+++CRAction.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\action types\craction.cs
+++Execute.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\action types\execute.cs
+++Trigger Types
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\trigger types\
+++AspNetRequestCount.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\trigger types\aspnetrequestcount.cs
+++AspNetRequestDuration.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\trigger types\aspnetrequestduration.cs
+++AspNetResponseStatus.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\trigger types\aspnetresponsestatus.cs
+++CRTrigger.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\trigger types\crtrigger.cs
+++EventCounter.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\trigger types\eventcounter.cs
+++CollectionRule.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\collectionrule.cs
+++CRFilter.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\crfilter.cs
+++CRLimit.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\collection rules\crlimit.cs
+++ConfigurationItem.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\configurationitem.cs
+++General.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\models\general.cs
+++Pages
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\
+++CollectionRules
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\
+++ActionConfiguration.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\actionconfiguration.cshtml
+++ActionConfiguration.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\actionconfiguration.cshtml.cs
+++ActionCreation.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\actioncreation.cshtml
+++ActionCreation.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\actioncreation.cshtml.cs
+++ActionSelection.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\actionselection.cshtml
+++ActionSelection.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\actionselection.cshtml.cs
+++CollectionRuleCreation.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\collectionrulecreation.cshtml
+++CollectionRuleCreation.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\collectionrulecreation.cshtml.cs
+++FilterConfiguration.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\filterconfiguration.cshtml
+++FilterConfiguration.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\filterconfiguration.cshtml.cs
+++FilterCreation.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\filtercreation.cshtml
+++FilterCreation.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\filtercreation.cshtml.cs
+++KVConfiguration.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\kvconfiguration.cshtml
+++KVConfiguration.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\kvconfiguration.cshtml.cs
+++LimitConfiguration.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\limitconfiguration.cshtml
+++LimitConfiguration.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\limitconfiguration.cshtml.cs
+++ProviderConfiguration.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\providerconfiguration.cshtml
+++ProviderConfiguration.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\providerconfiguration.cshtml.cs
+++Start.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\start.cshtml
+++Start.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\start.cshtml.cs
+++TraceConfiguration1.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\traceconfiguration1.cshtml
+++TraceConfiguration1.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\traceconfiguration1.cshtml.cs
+++TraceConfigurationProfile.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\traceconfigurationprofile.cshtml
+++TraceConfigurationProfile.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\traceconfigurationprofile.cshtml.cs
+++TraceConfigurationProviders.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\traceconfigurationproviders.cshtml
+++TraceConfigurationProviders.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\traceconfigurationproviders.cshtml.cs
+++TriggerConfiguration.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\triggerconfiguration.cshtml
+++TriggerConfiguration.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\triggerconfiguration.cshtml.cs
+++TriggerSelection.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\triggerselection.cshtml
+++TriggerSelection.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules\triggerselection.cshtml.cs
+++Shared
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\shared\
+++_Layout.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\shared\_layout.cshtml
+++_ValidationScriptsPartial.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\shared\_validationscriptspartial.cshtml
+++_ViewImports.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\_viewimports.cshtml
+++_ViewStart.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\_viewstart.cshtml
+++CollectionRules.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules.cshtml
+++CollectionRules.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\collectionrules.cshtml.cs
+++Error.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\error.cshtml
+++Index.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\index.cshtml
+++Index.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\index.cshtml.cs
+++LoadJson.cshtml
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\loadjson.cshtml
+++LoadJson.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\loadjson.cshtml.cs
+++Tests
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:c:\users\kkeirstead\dotnetmonitorconfigurationtests\tests\
+++ConfigurationTests.cs
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:c:\users\kkeirstead\dotnetmonitorconfigurationtests\tests\configurationtests.cs
+++appsettings.json
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\appsettings.json
+++Program.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\program.cs
+++Startup.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\startup.cs
+++No service dependencies discovered
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:>7618
+++Analyzers
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:analyzers
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:analyzers
+++Frameworks
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:frameworks
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:frameworks
+++Packages
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:packages
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:packages
+++launchSettings.json
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\properties\launchsettings.json
+++site.js
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\js\site.js
+++bootstrap
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\
+++jquery
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery\
+++jquery-validation
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery-validation\
+++jquery-validation-unobtrusive
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery-validation-unobtrusive\
+++Error.cshtml.cs
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\pages\error.cshtml.cs
+++appsettings.Development.json
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\appsettings.development.json
+++Microsoft.AspNetCore.Analyzers
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\program files\dotnet\sdk\6.0.100-rc.2.21478.25\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.analyzers.dll
+++Microsoft.AspNetCore.Components.Analyzers
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\program files\dotnet\sdk\6.0.100-rc.2.21478.25\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.components.analyzers.dll
+++Microsoft.AspNetCore.Mvc.Analyzers
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\program files\dotnet\sdk\6.0.100-rc.2.21478.25\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
+++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:c:\program files\dotnet\sdk\6.0.100-rc.2.21478.25\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\program files\dotnet\sdk\6.0.100-rc.2.21478.25\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+++Microsoft.CodeAnalysis.NetAnalyzers
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:c:\program files\dotnet\sdk\6.0.100-rc.2.21478.25\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\program files\dotnet\sdk\6.0.100-rc.2.21478.25\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+++xunit.analyzers
+++Microsoft.AspNetCore.App
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\microsoft.aspnetcore.app
+++Microsoft.NETCore.App
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:c:\users\kkeirstead\dotnetmonitorconfigurationtests\microsoft.netcore.app
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\microsoft.netcore.app
+++Newtonsoft.Json (13.0.1)
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:>7631
+++NJsonSchema (10.5.2)
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:>3483
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:>7632
+++xunit (2.4.1)
+++dist
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery\dist\
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery-validation\dist\
+++LICENSE
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\license
+++LICENSE.txt
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery\license.txt
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery-validation-unobtrusive\license.txt
+++LICENSE.md
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery-validation\license.md
+++jquery.validate.unobtrusive.js
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
+++jquery.js
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery\dist\jquery.js
+++additional-methods.js
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery-validation\dist\additional-methods.js
+++jquery.validate.js
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+++jquery.validate.unobtrusive.min.js
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
+++bootstrap.css
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+++bootstrap-grid.css
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+++bootstrap-reboot.css
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+++bootstrap.js
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+++jquery.min.js
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery\dist\jquery.min.js
+++additional-methods.min.js
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+++jquery.validate.min.js
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+++bootstrap.css.map
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+++bootstrap.min.css
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+++bootstrap-grid.css.map
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+++bootstrap-grid.min.css
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+++bootstrap-reboot.css.map
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+++bootstrap-reboot.min.css
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+++bootstrap.bundle.js
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+++bootstrap.js.map
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+++bootstrap.min.js
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+++jquery.min.map
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\jquery\dist\jquery.min.map
+++bootstrap.min.css.map
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+++bootstrap-grid.min.css.map
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+++bootstrap-reboot.min.css.map
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+++bootstrap.bundle.js.map
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+++bootstrap.bundle.min.js
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+++bootstrap.min.js.map
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+++bootstrap.bundle.min.js.map
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:c:\users\kkeirstead\dotnetmonitorconfiguration\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+++xunit.runner.visualstudio (2.4.3)
+++Microsoft.TestPlatform (17.0.0)
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:>7629
+++Microsoft.NET.Test.Sdk (17.0.0)
+i:{b9a76160-330d-4ac7-85a8-5aaf55b7dae9}:>7630
+++Solution 'DotnetMonitorConfiguration' ‎(2 of 2 projects)
+i:{00000000-0000-0000-0000-000000000000}:DotnetMonitorConfiguration.sln
+++DotnetMonitorConfigurationTests
+i:{00000000-0000-0000-0000-000000000000}:DotnetMonitorConfigurationTests
+++UnitTest1.cs
+++coverlet.collector (3.0.2)
+++Microsoft.NET.Test.Sdk (16.9.4)
+++MSTest.TestAdapter (2.2.3)
+++MSTest.TestFramework (2.2.3)
+++Projects
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:projects
+++Microsoft.NET.Test.Sdk
+++Microsoft.NET.Test.Sdk (15.0.0)
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:>3495
+++DotnetMonitorConfiguration (unloaded)
+++Solution 'DotnetMonitorConfiguration' ‎(2 of 1 project)
+++C:\Program Files\dotnet\sdk\6.0.100-rc.2.21478.25\Sdks\Microsoft.NET.Sdk.Web\analyzers\cs\Microsoft.AspNetCore.Analyzers.dll
+++C:\Program Files\dotnet\sdk\6.0.100-rc.2.21478.25\Sdks\Microsoft.NET.Sdk.Web\analyzers\cs\Microsoft.AspNetCore.Components.Analyzers.dll
+++C:\Program Files\dotnet\sdk\6.0.100-rc.2.21478.25\Sdks\Microsoft.NET.Sdk.Web\analyzers\cs\Microsoft.AspNetCore.Mvc.Analyzers.dll
+++C:\Program Files\dotnet\sdk\6.0.100-rc.2.21478.25\Sdks\Microsoft.NET.Sdk\targets\..\analyzers\Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll
+++C:\Program Files\dotnet\sdk\6.0.100-rc.2.21478.25\Sdks\Microsoft.NET.Sdk\targets\..\analyzers\Microsoft.CodeAnalysis.NetAnalyzers.dll
+++Microsoft.TestPlatform
+++Microsoft.TestPlatform (15.6.0)
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:>7639
+++MSTest.TestAdapter
+++MSTest.TestFramework
+++MSTest.TestAdapter (1.1.11)
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:>7646
+++MSTest.TestFramework (1.1.11)
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:>7645
+++xunit
+++xunit.runner.visualstudio
+++xunit (1.7.0.1540)
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:>7650
+++xunit.runner.visualstudio (0.99.2)
+i:{16757c2a-5497-4ce6-8d53-ec8dffa8ad94}:>7649

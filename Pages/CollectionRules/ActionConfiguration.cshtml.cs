@@ -43,6 +43,11 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return General.GetCurrValueAction(propertyInfo, actionIndex, collectionRuleIndex);
         }
 
+        public static string GetDocumentationLink()
+        {
+            return actionType.GetField("_documentationLink")?.GetValue(null).ToString() ?? "";
+        }
+
         public IActionResult OnPostSubmit()
         {
             var typeProperties = GetConfigurationSettings();

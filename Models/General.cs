@@ -260,9 +260,11 @@ namespace DotnetMonitorConfiguration.Models
             return collectionRuleOptions;
         }
 
-        public static void ConvertJsonToCollectionRules(string JsonRules)
+        public static List<CollectionRule> ConvertJsonToCollectionRules(string JsonRules)
         {
-            Dictionary<string, object> ruleNamesAndBodies = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonRules);
+            List<CollectionRule> collectionRules = new();
+
+            Dictionary<string, object> ruleNamesAndBodies = JsonConvert.DeserializeObject<Dictionary<string, object>>(JsonRules.Replace("\\", "\\\\").Replace("\\\"", "\""));
 
             List<CollectionRuleOptions> rules = new List<CollectionRuleOptions>();
             List<string> ruleNames = new List<string>();
@@ -359,10 +361,12 @@ namespace DotnetMonitorConfiguration.Models
                     tempRule._actions.Add(crAction);
                 }
 
-                _collectionRules.Add(tempRule);
+                collectionRules.Add(tempRule);
 
                 ++collectionRuleIndex;
             }
+
+            return collectionRules;
         }
 
         public static List<string> GetEnumNames(Type currType, bool isRequired)

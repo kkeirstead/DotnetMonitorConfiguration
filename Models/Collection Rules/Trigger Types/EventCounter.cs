@@ -34,5 +34,7 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types
         public TimeSpan? SlidingWindowDuration { get; set; }
 
         Type CRTrigger._triggerType { get; set; }
+
+        public const string _documentationLink = "https://github.com/dotnet/dotnet-monitor/blob/main/documentation/configuration.md#eventcounter-trigger";
     }
 }

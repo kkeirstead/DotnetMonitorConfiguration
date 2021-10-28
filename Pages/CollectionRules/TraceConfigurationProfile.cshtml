@@ -1,7 +1,15 @@
 ﻿@page
 @using DotnetMonitorConfiguration.Models
 @using System.ComponentModel.DataAnnotations
+@using DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
 @model TraceConfigurationProfileModel
+
+<div class="row-narrow-dark">
+    <div class="label">CollectTrace</div>
+    <a href=@CollectTrace._documentationLink target="_blank" class="sub-label">Learn More</a>
+</div>
+
+<br />
 
 <form method="post">
     <div class="row-narrow">

@@ -48,6 +48,11 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             return props;
         }
 
+        public static string GetDocumentationLink()
+        {
+            return triggerType.GetField("_documentationLink")?.GetValue(null).ToString() ?? "";
+        }
+
         public IActionResult OnPostSubmit()
         {
             var typeProperties = GetConfigurationSettings();

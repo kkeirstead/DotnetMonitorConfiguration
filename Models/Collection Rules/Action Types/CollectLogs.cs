@@ -47,5 +47,7 @@ namespace DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
         public LogFormat? Format { get; set; }
 
         Type CRAction._actionType { get; set; }
+
+        public const string _documentationLink = "https://github.com/dotnet/dotnet-monitor/blob/main/documentation/configuration.md#collectlogs-action";
     }
 }

@@ -3,6 +3,16 @@
 @using System.ComponentModel.DataAnnotations
 @model TriggerConfigurationModel
 
+<div class="row-narrow-dark">
+    <div class="label">@TriggerConfigurationModel.triggerType.Name</div>
+    @if (!string.IsNullOrEmpty(@TriggerConfigurationModel.GetDocumentationLink()))
+    {
+        <a href=@TriggerConfigurationModel.GetDocumentationLink() target="_blank" class="sub-label">Learn More</a>
+    }
+</div>
+
+<br />
+
 <form method="post">
   <div class="row-narrow">
     <fieldset>
