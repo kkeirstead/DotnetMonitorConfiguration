@@ -39,7 +39,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public IActionResult OnPostActionSelect(string data)
         {
-            int actionIndex = int.Parse(data);
+            actionIndex = int.Parse(data);
 
             CRAction currAction = General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[actionIndex];
             
