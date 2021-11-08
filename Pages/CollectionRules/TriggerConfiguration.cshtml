@@ -25,7 +25,9 @@
 
             string nameValue = General.GenerateNameValue(propertyInfo);
 
-            <div class="label">@nameValue</div>
+            string labelClassName = (Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute)) && TriggerConfigurationModel.failedState) ? "label-error" : "label";
+
+            <div class=@labelClassName>@nameValue</div>
 
             <div class="sub-label">@General.GetFormatDescription(currType)</div>
 

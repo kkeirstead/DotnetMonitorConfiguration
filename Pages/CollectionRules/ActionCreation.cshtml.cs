@@ -59,6 +59,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             else
             {
                 ActionConfigurationModel.actionType = actionType;
+                ActionConfigurationModel.failedState = false;
 
                 return RedirectToPage("./ActionConfiguration");
             }

@@ -19,6 +19,8 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public static Type triggerType;
 
+        public static bool failedState = false;
+
         [BindProperty]
         public Dictionary<string, string> properties { get; set; }
 
@@ -31,7 +33,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         {
             CRTrigger currTrigger = General._collectionRules[CollectionRuleCreationModel.crIndex]._trigger;
 
-            if (currTrigger == null)
+            if (currTrigger == null || currTrigger._triggerType != triggerType)
             {
                 return "";
             }
@@ -66,9 +68,11 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
                 General._collectionRules[CollectionRuleCreationModel.crIndex]._trigger = trigger;
 
+                failedState = false;
                 return RedirectToPage("./ActionCreation");
             }
 
+            failedState = true;
             return null;
         }
     }

@@ -34,6 +34,7 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
             Type t = Type.GetType("DotnetMonitorConfiguration.Models.Collection_Rules.Trigger_Types." + data);
 
             TriggerConfigurationModel.triggerType = t;
+            TriggerConfigurationModel.failedState = false;
 
             return RedirectToPage("./TriggerConfiguration"); 
         }

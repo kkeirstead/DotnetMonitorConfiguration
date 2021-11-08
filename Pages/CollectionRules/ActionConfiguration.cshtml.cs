@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace DotnetMonitorConfiguration.Pages.CollectionRules
@@ -22,14 +23,44 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
         [BindProperty]
         public Dictionary<string, string> properties { get; set; }
 
+        public static bool failedState = false;
+
         public ActionConfigurationModel(ILogger<ActionConfigurationModel> logger)
         {
             _logger = logger;
         }
 
-        public static PropertyInfo[] GetConfigurationSettings()
+        public static PropertyInfo[] GetConfigurationSettings(bool includeDictionary = true)
         {
-            return actionType.GetProperties();
+            List<PropertyInfo> propertyInfo = actionType.GetProperties().ToList<PropertyInfo>();
+
+            if (includeDictionary)
+            {
+                return propertyInfo.ToArray();
+            }
+
+            var toRemove = propertyInfo.Single(prop => prop.PropertyType == typeof(Dictionary<string, LogLevel?>));
+            propertyInfo.Remove(toRemove);
+
+            return propertyInfo.ToArray();
+        }
+
+        public static List<(string, LogLevel?)> GenerateKVPairs()
+        {
+            Dictionary<string, LogLevel?> kvPairs = new();
+            if (ActionCreationModel.actionIndex != General._collectionRules[CollectionRuleCreationModel.crIndex]._actions.Count)
+            {
+                kvPairs = ((CollectLogs)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).FilterSpecs ?? new();
+            }
+
+            List<(string, LogLevel?)> keyValuePairs = new();
+
+            foreach (var kvPair in kvPairs)
+            {
+                keyValuePairs.Add((kvPair.Key, kvPair.Value));
+            }
+
+            return keyValuePairs;
         }
 
         public static string GetCurrValue(PropertyInfo propertyInfo)
@@ -44,7 +75,21 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
 
         public IActionResult OnPostSubmit()
         {
-            var typeProperties = GetConfigurationSettings();
+            if (SaveCurrProvider())
+            {
+                failedState = false;
+                return RedirectToPage("./ActionCreation");
+            }
+            else
+            {
+                failedState = true;
+                return null;
+            }
+        }
+
+        public bool SaveCurrProvider()
+        {
+            var typeProperties = GetConfigurationSettings(includeDictionary: false);
 
             object[] constructorArgs = General.GetConstructorArgs(typeProperties, properties);
 
@@ -62,13 +107,50 @@ namespace DotnetMonitorConfiguration.Pages.CollectionRules
                 }
                 else
                 {
-                    General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex] = action;
+                    if (actionType == typeof(CollectLogs))
+                    {
+                        Dictionary<string, LogLevel?> filterSpecs = ((CollectLogs)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).FilterSpecs;
+                        General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex] = action;
+                        ((CollectLogs)General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex]).FilterSpecs = filterSpecs;
+                    }
+                    else
+                    {
+                        General._collectionRules[CollectionRuleCreationModel.crIndex]._actions[ActionCreationModel.actionIndex] = action;
+                    }
                 }
 
-                return RedirectToPage("./ActionCreation");
+                return true;
             }
 
-            return null;
+            return false;
+        }
+
+        public IActionResult OnPostAddKVP()
+        {
+            FilterSpecsKVConfigurationModel._key = "";
+
+            return NavigateToFilterSpecsKVConfiguration();
+        }
+
+        public IActionResult OnPostAccessKVP(string data)
+        {
+            FilterSpecsKVConfigurationModel._key = GenerateKVPairs()[int.Parse(data)].Item1;
+
+            return NavigateToFilterSpecsKVConfiguration();
+        }
+
+        private IActionResult NavigateToFilterSpecsKVConfiguration()
+        {
+            if (SaveCurrProvider())
+            {
+                failedState = false;
+                return RedirectToPage("./FilterSpecsKVConfiguration");
+            }
+            else
+            {
+                failedState = true;
+                return null;
+            }
         }
     }
 }

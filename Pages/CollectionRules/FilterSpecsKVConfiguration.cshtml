@@ -1,0 +1,35 @@
+﻿@page
+@using DotnetMonitorConfiguration.Models
+@using System.ComponentModel.DataAnnotations
+@using DotnetMonitorConfiguration.Models.BorrowedFromDM
+@using Microsoft.Extensions.Logging;
+@model FilterSpecsKVConfigurationModel
+
+<form method="post">
+  <div class="row-narrow">
+    <fieldset>
+
+        <div class="label">Key</div>
+        <input asp-for=Key placeholder="Key" value=@FilterSpecsKVConfigurationModel._key/>
+
+        <div class="label">Value</div>
+
+        @{
+            string val = FilterSpecsKVConfigurationModel.GetValue();
+        }
+
+        <select asp-for=Value>
+
+            @{List<string> names = General.GetEnumNames(typeof(LogLevel), false);}
+
+            @foreach (var enumName in names)
+            {
+                bool isSelected = val.Equals(enumName, StringComparison.CurrentCultureIgnoreCase);
+                <option value=@enumName selected=@isSelected>@enumName</option>
+            }
+        </select>
+    </fieldset>
+  </div>
+
+  <button class="submit-button" type="submit" asp-page-handler="Submit">Submit</button>
+</form>

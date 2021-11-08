@@ -13,6 +13,7 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 using DotnetMonitorConfiguration.Pages.CollectionRules;
+using Microsoft.Extensions.Logging;
 
 namespace DotnetMonitorConfiguration.Models
 {
@@ -89,7 +90,8 @@ namespace DotnetMonitorConfiguration.Models
             {
                 int index = int.Parse(key);
 
-                if (typeProperties[index].PropertyType == typeof(List<EventPipeProvider>))
+                // We should have a better solution to this instead of special casing everything
+                if (typeProperties[index].PropertyType == typeof(List<EventPipeProvider>) || typeProperties[index].PropertyType == typeof(Dictionary<string, LogLevel?>))
                 {
                     // Special case since we handle EventPipeProviders on a separate screen
                     continue;

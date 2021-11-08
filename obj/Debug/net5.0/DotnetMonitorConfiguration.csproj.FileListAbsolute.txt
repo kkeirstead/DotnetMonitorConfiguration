@@ -189,3 +189,4 @@ C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\ref\DotnetMonito
 C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\DotnetMonitorConfiguration.pdb
 C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\DotnetMonitorConfiguration.genruntimeconfig.cache
 C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\DotnetMonitorConfiguration.csproj.AssemblyReference.cache
+C:\Users\kkeirstead\DotnetMonitorConfiguration\obj\Debug\net5.0\Razor\Pages\CollectionRules\FilterSpecsKVConfiguration.cshtml.g.cs

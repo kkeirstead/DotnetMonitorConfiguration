@@ -2,6 +2,7 @@
 @using DotnetMonitorConfiguration.Models
 @using System.ComponentModel.DataAnnotations
 @using DotnetMonitorConfiguration.Models.Collection_Rules.Action_Types
+@using Microsoft.Extensions.Logging
 @model ActionConfigurationModel
 
 <div class="row-narrow-dark">
@@ -27,7 +28,9 @@
 
             string nameValue = General.GenerateNameValue(propertyInfo);
 
-            <div class="label">@nameValue</div>
+            string labelClassName = (Attribute.IsDefined(propertyInfo, typeof(RequiredAttribute)) && ActionConfigurationModel.failedState) ? "label-error" : "label";
+
+            <div class=@labelClassName>@nameValue</div>
 
             <div class="sub-label">@General.GetFormatDescription(currType)</div>
 
@@ -44,6 +47,19 @@
                     <option value=@enumName selected=@isSelected>@enumName</option>
                 }
                 </select>
+            }
+            else if (currType == typeof(Dictionary<string, LogLevel?>))
+            {
+                <button class="submit-button" type="submit" asp-page-handler="AddKVP">New Argument</button>
+
+                int kvpIndex = 0;
+                foreach (var pair in ActionConfigurationModel.GenerateKVPairs())
+                {
+                    <button class="submit-button" type="submit" asp-route-data=@kvpIndex.ToString() asp-page-handler="AccessKVP">@pair.Item1 | @pair.Item2.Value</button>
+                    ++kvpIndex;
+                }
+
+                --index; // We don't want to increment for a non-field
             }
             else
             {
